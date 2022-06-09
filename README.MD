@@ -1,5 +1,6 @@
 # Welcome to JlizBank
-<img src="~/ImgForIntro/Home.jpg" width="50%" height="50%"/>
+<img src="/ImgForIntro/Home.jpg" width="50%" height="50%"/>
+
 ### Built with
 <ul>
 	<li><a href='https://visualstudio.microsoft.com/zh-hant/vs/'>Visual Studio 2022</a></li>

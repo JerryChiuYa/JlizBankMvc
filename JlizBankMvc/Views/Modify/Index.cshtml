@@ -1,0 +1,107 @@
+﻿@model JlizBankMvc.Models.RegisterViewModel;
+@{
+    ViewData["Title"] = "Personal Information";
+}
+
+<style>
+        .form-group{
+         padding:2% 10% 2% 10%;
+         margin:1% 25% 0 25%;
+        border-radius:20px;
+        background-color:white;
+        width:50%;
+        box-shadow:0px 0px 5px;
+    }
+      label{
+        font-size:20px;
+        font-weight:300;
+         font-family: Itim, cursive;
+    }
+    h2{
+        text-align:center;
+        color:#3D7878;
+        font-size:50px;
+        font-weight:bold;
+        font-family: Fondamento, cursive;
+    }
+    input,label,a{
+        font-family: Itim, cursive;
+    }
+    .MyBtn{
+        border-radius:10px;
+        width:100%;
+        margin:2%;
+        background-color:#00FFFF;
+        box-shadow:2px 2px 4px;
+    }
+    .MyBtn:hover{
+        background-color:#00E3E3;
+    }
+ 
+
+
+  input[type=text],   input[type=email], input[type=password]{
+      padding:10px 30px;
+      border-radius:10px;
+      width:105%;
+      
+  }
+
+
+</style>
+<h2>Personal Information</h2>
+
+<form class="form-group" method="post"  asp-controller="Modify" asp-action="ModifyPersonalInfoGet" >
+    
+    <label>Login Account: </label>
+    <input class="form-control" type="text" asp-for="LoginAccount" readonly/>
+    <p></p>
+
+
+    <label>Actual Name:</label>
+    <input class="form-control" type="text"  asp-for="UserName" readonly/>
+    <p></p>
+
+    <label >Identity Number:</label>
+    <div>
+    <input class="form-control" type="text"  style="text-transform:uppercase" asp-for="IdentityNum" readonly/>
+
+    </div>
+    <p></p>
+
+    <label>Local Number:</label>
+    <div>
+    <input class="form-control" type="text"  asp-for="Phone" readonly/>
+
+    </div>
+    <p></p>
+
+    <label>Mobile:</label>
+    <div>
+    <input class="form-control" type="text"  asp-for="Mobile"  readonly/>
+
+    </div>
+    <p></p>
+
+    <label>Address:</label>
+    <input class="form-control" type="text"  asp-for="Address"  readonly/>
+    <p></p>
+
+    <label>Email: </label>
+    <div>
+    <input class="form-control" type="email"  asp-for="Email"  readonly/>
+
+    </div>
+    <p></p>
+    <input type="submit" value="Modify My Basic Information" class="MyBtn"  >
+    
+     <p class="succuss">
+
+        @{
+            if (ViewBag.ModifyMsg!=null && !string.IsNullOrEmpty(ViewBag.ModifyMsg))
+            {
+                @ViewBag.ModifyMsg
+            }
+        }
+    </p>
+</form>

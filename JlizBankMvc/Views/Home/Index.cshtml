@@ -1,0 +1,94 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<style>
+    .hand{
+        width:70%;
+        height:70%;
+
+    }
+
+    .jliz{
+        font-family: Itim, cursive;
+        text-align: center;
+        font-size: 70px;
+        color: rgb(0, 82, 11);
+        text-shadow: rgb(255, 102, 102) 2px 2px 2px;
+    }
+
+    .currency{
+        width:12%;
+        height:12%;
+        display:inline;
+        vertical-align:baseline;
+        margin:0 20px;
+        opacity:0.8;
+    }
+
+    .Login{
+        text-align:center;
+        font-weight:bold;
+        background-color:#02F78E;
+        border-radius:45px;
+        font-size:30px;
+        width:25%;
+        box-shadow:3px 3px 1px;
+        margin:0 5% 0 5%;
+        
+    }
+    .Login:hover{
+        transition:0.5s;
+        background-color:#02DF82;
+        box-shadow:10px 10px 8px;
+        
+    }
+    .photo{
+        border-radius: 40px;
+        width: 120px;
+        height: 150px;
+        animation: tai3 2s ease-in;
+        animation-fill-mode: forwards;
+    }
+
+
+   /* Animation Here*/
+   @@keyframes tai3 {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+</style>
+
+
+<div style="text-align:center; width:120%;">
+    <div>
+       
+        <div>
+             <img src="~/Images/currency.png" class="currency" />
+            <label class="jliz">Welcome to JlizBank
+                <br /><label class="jliz" style="font-family:微軟正黑體">傑力士網路銀行</label>
+                @{
+                    if (Context.User.Identities.Any(i=>i.IsAuthenticated)==false)
+                    {
+                        <br /><button class="Login" onclick="location.href='@Url.Action("Index", "Login")'" >Login</button>  
+                        <button class="Login" onclick="location.href='@Url.Action("Register", "Login")'" >Register</button>  
+                    }
+                    else
+                    {
+                        <br /><img src="~/Images/tai3.jpg"  class="photo"/>
+                    }
+                }
+                
+            </label>
+            <img src="~/Images/currency.png" class="currency"/>
+        </div>
+        
+    </div>
+    <img class="hand" src="~/Images/handshake-2009183_1920.png" />
+</div>

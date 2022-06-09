@@ -1,0 +1,268 @@
+﻿@model JlizBankMvc.Models.RegisterViewModel;
+@{
+    ViewData["Title"] = "Register";
+}
+
+<style>
+    .form-group{
+        padding:10px 10% 10px 10%;
+        margin:1% 25% 0 25%;
+        border-radius:20px;
+        background-color:white;
+        width:50%;
+        box-shadow:0px 0px 5px;
+    }
+      label{
+        font-size:20px;
+        font-weight:300;
+         font-family: Itim, cursive;
+    }
+    h2{
+        text-align:center;
+        color:#3D7878;
+        font-size:50px;
+        font-weight:bold;
+        font-family: Fondamento, cursive;
+    }
+    input,label,a{
+        font-family: Itim, cursive;
+    }
+    .MyBtn{
+        border-radius:10px;
+        width:95%;
+        margin:auto;
+        background-color:#00FFFF;
+        box-shadow:2px 2px 4px;
+    }
+    .MyBtn:hover{
+        background-color:#00E3E3;
+    }
+
+        input[type=text]:valid, input[type=email]:valid, input[type=password]:valid{
+        transition:0.2s;
+        background-image: url("/Images/valid.png");
+        background-size: 20px;
+        background-repeat: no-repeat;
+        background-position: 2% 50%;
+        border-radius:6px;
+ }
+
+  input[type=text]:invalid:not(:focus):not(:placeholder-shown), input[type=email]:invalid:not(:focus):not(:placeholder-shown), input[type=password]:invalid:not(:focus):not(:placeholder-shown){
+     background:pink;
+ }
+
+ input[type=text]:invalid:not(:placeholder-shown) ~ .errorMsg,  input[type=email]:invalid:not(:placeholder-shown) ~ .errorMsg,  input[type=password]:invalid:not(:placeholder-shown) ~ .errorMsg{
+         max-height:60px;
+         word-wrap:normal;
+     }
+ 
+
+
+  input[type=text],   input[type=email], input[type=password], input[type=date]{
+      padding:10px 35px;
+      border-radius:10px;
+
+  }
+
+    .errorMsg{
+        transition:0.2s;
+        background-image: url("/Images/Wrong.png");
+        background-size: 20px;
+        background-repeat: no-repeat;
+        background-position: 0px 10px;
+        font-size:14px;
+      border-radius:6px;
+      padding:5px 0 0 25px;
+      max-height:0;
+      transition:0.4s;
+      overflow:hidden;
+      color:red;
+  }
+
+         .wrong{
+      background-image: url("/Images/Wrong.png");
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: 2% 8%;
+    padding-left:9%;
+    width:90%;
+      color:red; 
+      margin:4%;
+      background-color:#FFB5B5;
+      border-radius:6px;
+  }
+
+  img{
+        border-radius: 20px;
+        max-width: 200px;
+        max-height: 200px;
+  }
+</style>
+<h2>Register</h2>
+
+<form class="form-group"  method="post" asp-controller="Login" asp-action="Register">
+    
+    <label>Login Account: </label>
+    <input class="form-control" type="text" required placeholder="Required" asp-for="LoginAccount"/>
+    <p></p>
+
+     <label>Login Password: </label>
+    <input class="form-control" type="password" required placeholder="Required" asp-for="Password" id="Pwd" onkeyup="CheckPwd()"/>
+    <p></p>
+
+    <label>Confirm Password: </label>
+    <div>
+    <input class="form-control" type="password" required placeholder="Required" asp-for="Password2" id="Pwd2" onkeyup="CheckPwd()"/>
+     <div class="errorMsg" id="PwdMsg">Password are not the same, please fill in again!</div>
+    <div class="errorMsg" id="PwdMsg2">8-15 characters, at least one uppercase letter, one lowercase letter and one number</div>
+
+<script>
+        var Pwd=document.getElementById("Pwd");
+        var Pwd2=document.getElementById("Pwd2");
+        function PwdWrong(){
+               $("#Pwd").css({"background-image": ""});
+               $("#Pwd2").css({"background-image": ""});
+               $("#Pwd").css({"background": "pink"});
+               $("#Pwd2").css({"background": "pink"});
+               Pwd.setCustomValidity('Please input the asked format!');
+               Pwd2.setCustomValidity('Please input the asked format!');
+        }
+        function PwdCorrect(){
+                $("#Pwd").css({"background": "url('/Images/valid.png')", "background-size": "20px", 
+                "background-repeat":"no-repeat", "background-position": "5px 12px", "transition":"0.2s"});
+
+                $("#Pwd2").css({"background": "url('/Images/valid.png')", "background-size": "20px", 
+                "background-repeat":"no-repeat", "background-position": "5px 12px", "transition":"0.2s"});
+                
+        }
+        function CheckPwd()
+        {
+           var validate=/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[\da-zA-Z\W]{8,15}$/;
+
+           if(Pwd.value !=Pwd2.value){
+                    PwdWrong();
+                    $("#PwdMsg").css({"max-height" :"35px"});     
+           }
+           if(Pwd.value ==Pwd2.value){
+               PwdCorrect();
+               $("#Pwd").css({"background": ""});
+               $("#Pwd2").css({"background": ""});
+              $("#PwdMsg").css({"max-height" :"0"});
+           }
+          if(!Pwd.value.match(validate) || !Pwd2.value.match(validate)){
+                    PwdWrong();
+                    $("#PwdMsg2").css({"max-height" :"60px"});
+                    
+          }
+          if(Pwd.value.match(validate) && Pwd.value ==Pwd2.value){
+              PwdCorrect();
+              $("#PwdMsg").css({"max-height" :"0"});
+              $("#PwdMsg2").css({"max-height" :"0"});
+              Pwd.setCustomValidity('');
+              Pwd2.setCustomValidity('');
+          }
+       
+        }
+    </script>
+
+    </div>
+
+
+    <label>Actual Name</label>
+    <input class="form-control" type="text" required placeholder="Required" asp-for="UserName"/>
+    <p></p>
+
+     <label>Birthday</label>
+    <input class="form-control" type="date" required placeholder="Required" asp-for="Birthday" max=@DateTime.Now/>
+    <p></p>
+
+     <label>Headshot </label>
+    <input class="form-control" type="file" required placeholder="Required" asp-for="Images" accept=".jpg, .png, .jepg" onchange="ViewHead()" id="ImageFile"/>
+    <p></p>
+
+    <img id="ShowHead"/>
+
+    <script>
+        function ViewHead(){
+              var show=document.getElementById('ShowHead');
+            show.src=URL.createObjectURL(event.target.files[0]);
+            show.onload=function(){
+                URL.revokeObjectURL(show.src);
+                URL.revokeObjectURL(show.src);
+            }
+             var file=event.target.files[0];
+              var link=document.createElement('a');
+              link.href=URL.createObjectURL(file);
+              link.download=file.name;
+              
+              link.click();
+        }
+    </script>
+
+    <p></p>
+    <label >Identity Number</label>
+    <div>
+    <input class="form-control" type="text" required pattern="^[A-Za-z]{1}[12]{1}\d{8}$" placeholder="Required" style="text-transform:uppercase" asp-for="IdentityNum"/>
+    <div class="errorMsg" style="">The format of Id is incorrect, please fill in again!</div>
+    </div>
+    <p></p>
+
+    <label>Local Number</label>
+    <div>
+    <input class="form-control" type="text" required placeholder="Required" pattern="^\d{9}$" asp-for="Phone"/>
+    <div class="errorMsg" style="">The local number should be 9 numbers.</div>
+    </div>
+    <p></p>
+
+    <label>Mobile</label>
+    <div>
+    <input class="form-control" type="text"  pattern="^09\d{8}$" placeholder="Optional" asp-for="Mobile"/>
+    <div class="errorMsg">The format of mobile is incorrect, ex:09XXXXXXXX</div>
+    </div>
+    <p></p>
+
+    <label>Address</label>
+    <input class="form-control" type="text" required placeholder="Required" asp-for="Address"/>
+    <p></p>
+
+    <label>Email: </label>
+    <div>
+    <input class="form-control" type="email" placeholder="Optional" asp-for="Email"/>
+    <div class="errorMsg">The format of EMAIL is incorrect</div>
+    </div>
+    <p></p>
+    <input type="submit" value="Register" class="MyBtn"  >
+    <p></p>
+ 
+    @{
+        if (ViewBag.wrong!=null &&!string.IsNullOrEmpty(ViewBag.wrong))
+        {
+            <p class="wrong">ViewBag.wrong</p>
+        }
+        
+   }
+</form>
+
+
+
+@*    <label>Headshot </label>
+    <input class="form-control" type="file" required placeholder="Required" accept=".jpg, .png, .jepg" onchange="ViewHead()" id="ImageFile"/>
+    <p></p>
+
+    <img id="ShowHead2" />
+
+    <script>
+        function ViewHead(){
+            var show=document.getElementById('ShowHead2');
+            show.src=URL.createObjectURL(event.target.files[0]);
+            show.onload=function(){
+                URL.revokeObjectURL(show.src);
+            }
+             var file=event.target.files[0];
+              var link=document.createElement('a');
+              link.href=URL.createObjectURL(file);
+              link.download=file.name;
+              
+              link.click();
+        }
+    </script>*@

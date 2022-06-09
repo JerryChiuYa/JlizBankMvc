@@ -1,0 +1,151 @@
+﻿@model JlizBankMvc.Models.RegisterViewModel;
+@{
+    ViewData["Title"] = "Modify PersonalInfo";
+}
+
+
+
+<style>
+        .form-group{
+         padding:2% 10% 2% 10%;
+         margin:1% 25% 0 25%;
+        border-radius:20px;
+        background-color:white;
+        width:50%;
+        box-shadow:0px 0px 5px;
+    }
+      label{
+        font-size:20px;
+        font-weight:300;
+         font-family: Itim, cursive;
+    }
+    h2{
+        text-align:center;
+        color:#3D7878;
+        font-size:50px;
+        font-weight:bold;
+        font-family: Fondamento, cursive;
+    }
+    input,label,a{
+        font-family: Itim, cursive;
+    }
+    .MyBtn{
+        border-radius:10px;
+        width:100%;
+        margin:auto;
+        background-color:#00FFFF;
+        box-shadow:2px 2px 4px;
+    }
+    .MyBtn:hover{
+        background-color:#00E3E3;
+    }
+
+        input[type=text]:valid, input[type=email]:valid, input[type=password]:valid{
+        transition:0.2s;
+        background-image: url("/Images/valid.png");
+        background-size: 20px;
+        background-repeat: no-repeat;
+        background-position: 5px 12px;
+ }
+
+  input[type=text]:invalid:not(:focus):not(:placeholder-shown), input[type=email]:invalid:not(:focus):not(:placeholder-shown), input[type=password]:invalid:not(:focus):not(:placeholder-shown){
+     background:pink;
+ }
+
+ input[type=text]:invalid:not(:placeholder-shown) ~ .errorMsg,  input[type=email]:invalid:not(:placeholder-shown) ~ .errorMsg,  input[type=password]:invalid:not(:placeholder-shown) ~ .errorMsg{
+         max-height:60px;
+         word-wrap:normal;
+     }
+ 
+
+
+  input[type=text],   input[type=email], input[type=password]{
+      padding:10px 30px;
+      border-radius:10px;
+      width:400px;
+  }
+
+    .errorMsg{
+        transition:0.2s;
+        background-image: url("/Images/Wrong.png");
+        background-size: 20px;
+        background-repeat: no-repeat;
+        background-position: 0px 10px;
+        font-size:14px;
+      padding:5px 0 0 25px;
+      max-height:0;
+      transition:0.4s;
+      overflow:hidden;
+      color:red;
+  }
+
+        .succuss{
+
+         margin:3% 0 0 3%;
+         color:blue;
+         padding-left:8%;
+        background-image: url("/Images/valid.png");
+        background-size: 20px;
+        background-repeat: no-repeat;
+        background-position: 2% 4%;
+  }
+
+
+</style>
+
+<h2>Modify My Basic Information</h2>
+
+<form class="form-group"  method="post" asp-controller="Modify" asp-action="ModifyPersonalInfo">
+    
+    <label>Login Account: </label>
+    <input class="form-control" type="text"  asp-for="LoginAccount" readonly/>
+    <p></p>
+
+
+    <label>Actual Name</label>
+    <input class="form-control" type="text" required placeholder="Required" asp-for="UserName"/>
+    <p></p>
+
+    <label >Identity Number</label>
+    <div>
+    <input class="form-control" type="text"   style="text-transform:uppercase" asp-for="IdentityNum" readonly/>
+    </div>
+    <p></p>
+
+    <label>Local Number</label>
+    <div>
+    <input class="form-control" type="text" required placeholder="Required" pattern="^\d{9}$" asp-for="Phone"/>
+    <div class="errorMsg" style="">The local number should be 9 numbers.</div>
+    </div>
+    <p></p>
+
+    <label>Mobile</label>
+    <div>
+    <input class="form-control" type="text"  pattern="^09\d{8}$" placeholder="Optional" asp-for="Mobile"/>
+    <div class="errorMsg">The format of mobile is incorrect, ex:09XXXXXXXX</div>
+    </div>
+    <p></p>
+
+    <label>Address</label>
+    <input class="form-control" type="text" required placeholder="Required" asp-for="Address"/>
+    <p></p>
+
+    <label>Email: </label>
+    <div>
+    <input class="form-control" type="email" placeholder="Optional" asp-for="Email"/>
+    <div class="errorMsg">The format of EMAIL is incorrect</div>
+    </div>
+    <p></p>
+    <input type="submit" value="Confirm and Modify" class="MyBtn"  >
+
+    <p class="succuss">
+
+        @{
+            if (ViewBag.ModifyMsg!=null && !string.IsNullOrEmpty(ViewBag.ModifyMsg))
+            {
+                @ViewBag.ModifyMsg
+            }
+        }
+    </p>
+
+</form>

@@ -1,0 +1,116 @@
+﻿@model JlizBankMvc.Models.TransactionViewModel;
+@{
+    ViewData["Title"] = "ShowTransactionResult";
+}
+<style>
+       .form-group{
+         padding:2% 10% 2% 10%;
+         margin:1% 25% 0 25%;
+        border-radius:20px;
+        background-color:white;
+        width:75%;
+        box-shadow:0px 0px 5px;
+    }
+
+    h2{
+        text-align:center;
+        color:#3D7878;
+        font-size:50px;
+        font-weight:bold;
+        font-family: Fondamento, cursive;
+    }
+
+              label{
+        font-size:20px;
+        font-weight:300;
+         font-family: Itim, cursive;
+    }
+        input,label,a,p{
+        font-family: Itim, cursive;
+        
+    }
+
+        p{
+        background-color:#D7FFEE;
+        border-radius:5px;
+        width:50%;
+        box-shadow:2px 2px 5px;
+        padding-left:5%;
+    }
+
+              .success{
+        background-color:#02F78E;
+        width:90%;
+         margin:3% 0 0 3%;
+         color:#01814A;
+         padding-left:9%;
+        background-image: url("/Images/valid.png");
+        background-size: 20px;
+        background-repeat: no-repeat;
+        background-position: 2% 8%;
+        border-radius:6px;
+  }
+
+         .wrong{
+      background-image: url("/Images/Wrong.png");
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: 2% 8%;
+    padding-left:9%;
+    width:90%;
+      color:red; 
+      margin:4%;
+      background-color:#FFB5B5;
+      border-radius:6px;
+  }
+
+</style>
+<h2>Transaction  Result</h2>
+
+
+
+<form class="form-group">
+
+        @{
+    if(ViewBag.Success!=null && !string.IsNullOrEmpty(ViewBag.Success))
+    {
+        <p class="success">@ViewBag.Success</p>
+        
+    }
+}
+<p></p>
+     <table class="table table-success table-striped table-hover caption-top">
+         <thead>
+             <tr>
+             <th>Transaction Time</th>
+            <th>Type</th>
+            <th>Transaction Money</th>
+            <th>From Bank</th>
+            <th>To Bank</th>
+            <th>Handling Fees</th>
+            <th>Account Balance</th>
+            <th>Remark</th>
+             </tr>
+         </thead>
+
+         <tbody>
+           @{
+                if (Model !=null)
+                {
+               
+                <tr>
+                    <td >@Model.TransactionTime</td>
+                    <td>@Model.TransactionType</td>
+                    <td>@Model.TransactionMoney.ToString("N0")</td>
+                    <td>@Model.FromBankName</td>
+                    <td>@Model.ToBankName</td>
+                    <td >@Model.HandlingFees</td>
+                    <td>@Model.AccountBalance.ToString("N0")</td>
+                    <td>@Model.Remark</td>
+                </tr>
+            
+                }
+        }
+         </tbody>
+    </table>
+</form>

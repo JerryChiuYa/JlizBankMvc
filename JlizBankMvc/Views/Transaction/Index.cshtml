@@ -1,0 +1,169 @@
+﻿@model IEnumerable<TransactionViewModel>;
+@{
+    ViewData["Title"] = "Index";
+}
+
+<style>
+    .form-group{
+        padding:10px 8% 10px 8%;
+        margin:1% 25% 0 20%;
+        border-radius:20px;
+        background-color:white;
+        width:80%;
+        box-shadow:0px 0px 5px;
+    }
+    input[type=date]{
+        width:20%;
+    }
+    .btn-outline-primary{
+         text-align:center;
+        font-weight:bold;
+        background-color:#1AFD9C;
+        border-radius:25px;
+        font-size:10px;
+        box-shadow:1px 1px 1px;
+
+       
+    }
+
+        h2{
+        text-align:center;
+        color:#3D7878;
+        font-size:50px;
+        font-weight:bold;
+        font-family: Fondamento, cursive;
+    }
+        .MyBtn{
+        border-radius:10px;
+        font-weight:700;
+        width:15%;
+        margin:auto;
+        background-color:#00FFFF;
+        box-shadow:2px 2px 7px;
+    }
+    .MyBtn:hover{
+        background-color:#00E3E3;
+       
+    }
+
+      .errorMsg{
+        transition:0.2s;
+        background-image: url("/Images/Wrong.png");
+        background-size: 20px;
+        background-repeat: no-repeat;
+        background-position: 0px 10px;
+      padding:5px 0 0 25px;
+      transition:0.4s;
+      overflow:hidden;
+      color:red;
+  }
+
+  table{
+      margin:1% 20% 0 22%;
+
+  }
+
+  .labelT{
+      font-size:25px;
+      font-weight:800;
+      color:#01814A;
+  }
+
+  th,td{
+      word-wrap:break-word;
+      text-align:center;
+      font-size:14px;
+  }
+</style>
+<h2>Transaction Details</h2>
+
+<form class="form-group"  method="post" asp-controller="Transaction" asp-action="SpecificTransactionDetails" style="overflow:hidden">
+    <p class="labelT">Select Time</p>
+
+    <div class="btn-group" role="group" aria-label="Basic radio toggle button group" style="width:100%;">
+  <input type="radio" class="btn-check" name="radioDate" id="btnradio1" autocomplete="off" checked value="1d">
+  <label class="btn btn-outline-primary" for="btnradio1">Yesterday</label>
+
+  <input type="radio" class="btn-check" name="radioDate" id="btnradio2" autocomplete="off" value="1w">
+  <label class="btn btn-outline-primary" for="btnradio2">The past one week</label>
+
+  <input type="radio" class="btn-check" name="radioDate" id="btnradio3" autocomplete="off" value="1m">
+  <label class="btn btn-outline-primary" for="btnradio3">The past one month</label>
+
+  <input type="radio" class="btn-check" name="radioDate" id="btnradio4" autocomplete="off" value="3m">
+  <label class="btn btn-outline-primary" for="btnradio4">The past 3 months</label>
+
+  <input type="radio" class="btn-check" name="radioDate" id="btnradio5" autocomplete="off" value="6m">
+  <label class="btn btn-outline-primary" for="btnradio5">The past 6 months</label>
+</div>
+
+<p></p>
+<input type="submit" value="Query" class="MyBtn"  >
+</form>
+
+<form class="form-group"  method="post" asp-controller="Transaction" asp-action="ShowTransactionDetails">
+    
+    <p class="labelT">Select Specific duration</p>
+    <label>Start date: </label>
+    <input class="form-control" type="date" name="start" />
+
+   <label>End Date: </label>
+    <input class="form-control" type="date"  name="end" />
+    <div class="errorMsg">
+        @{
+            if (ViewBag.errorMsg !=null && !string.IsNullOrEmpty(ViewBag.errorMsg.ToString()))
+            {
+                @ViewBag.errorMsg.ToString()
+            }
+        }
+    </div>
+    <p></p>
+    
+
+    <input type="submit" value="Query" class="MyBtn"  >
+    <p></p>
+
+    
+
+</form>
+
+<div style="width:85%">
+<table class="table table-success table-striped table-hover caption-top">
+    
+        @{
+            if (@ViewBag.start!=null && @ViewBag.end!=null && !string.IsNullOrEmpty(ViewBag.start.ToString()) && !string.IsNullOrEmpty(ViewBag.end.ToString()))
+            {
+                <caption>Query Duration: @ViewBag.start.ToString() ~ @ViewBag.end.ToString()</caption>
+            }
+        }
+   
+    <thead>
+        <tr>
+            <th>Transaction Time</th>
+            <th>Type</th>
+            <th>Transaction Money</th>
+            <th>Account Balance</th>
+            <th>Remark</th>
+        </tr>
+    </thead>
+
+    <tbody>
+            @{
+                if (Model !=null)
+                {
+                            foreach (var item in Model)
+            {
+                <tr>
+                    <td >@item.TransactionTime.ToShortDateString()</td>
+                    <td>@item.TransactionType</td>
+                    <td>@item.TransactionMoney.ToString("N0")</td>
+                    <td>@item.AccountBalance.ToString("N0")</td>
+                    <td>@item.Remark</td>
+                </tr>
+            }
+                }
+        }
+    </tbody>
+</table>
+
+</div>

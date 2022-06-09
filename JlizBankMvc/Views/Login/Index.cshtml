@@ -1,0 +1,115 @@
+﻿@model JlizBankMvc.Models.LoginViewModel;
+@using Recaptcha.Web.Mvc;
+@{
+    ViewData["Title"] = "Index";
+}
+
+<style>
+    input[type=password], input[type=text]{
+        width:100%;
+    }
+
+    .form-group{
+        
+        padding:10px 10% 10px 10%;
+        margin:1% 25% 0 25%;
+        border-radius:20px;
+        background-color:white;
+        width:50%;
+        box-shadow:0px 0px 5px;
+    }
+    label{
+        font-size:20px;
+        font-weight:300;
+         font-family: Itim, cursive;
+    }
+    h2{
+
+        text-align:center;
+        color:#3D7878;
+        font-size:50px;
+        font-weight:bold;
+        font-family: Fondamento, cursive;
+
+    }
+    input,label,a{
+        font-family: Itim, cursive;
+    }
+    .MyBtn{
+        border-radius:20px;
+        width:20%;
+        background-color:#00FFFF;
+        box-shadow:2px 2px 4px;
+    }
+    .MyBtn:hover{
+        background-color:#00E3E3;
+    }
+
+    .wrong{
+          background-image: url("/Images/Wrong.png");
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: 2% 8%;
+    padding-left:9%;
+    font-size:14px;
+      color:red; 
+      margin:4%;
+      background-color:#FFB5B5;
+      border-radius:6px;
+    }
+</style>
+
+<div >
+    <h2 >Login</h2>
+</div>
+
+
+
+<form class="form-group"  method="post" asp-controller="Login" asp-action="VerifyUser">
+
+    <div style="margin:15px;">
+            <label >Login Account: </label>
+            <input type="text" asp-for=LoginAccount required class="form-control"/>
+            <label>Login Password: </label>
+            <input type="password" asp-for=Password required class="form-control"/>
+
+
+    <p></p>
+ 
+        @Html.RecaptchaApiScript()
+        @Html.RecaptchaWidget(renderApiScript:false)
+@*        Html.RecaptchaWidget()*@
+
+        @{
+            if (TempData["RecaptchaMsg"]!=null && !string.IsNullOrEmpty(TempData["RecaptchaMsg"].ToString()))
+            {
+                <p style="color:red;">@TempData["RecaptchaMsg"].ToString()</p>
+            }
+        }
+  
+  <p></p>
+    <input type="submit" value="Login" class="MyBtn"  >
+     <input type="reset" value="Reset" class="MyBtn"  style="margin-left:20px;">
+     <p></p>
+
+
+     @{
+        if (TempData["LoginInfo"]!=null && !string.IsNullOrEmpty(TempData["LoginInfo"].ToString()))
+        {
+            <p class="wrong">@TempData["LoginInfo"].ToString()</p>
+            
+        }
+    }
+   <p></p>
+    <a href="/Login/Register">No Account?Register here</a>
+    <p></p>
+    <a href="/Modify/ForgetPassword">Forget password?</a>
+
+    </div>
+
+    
+</form>
+
+
+
+

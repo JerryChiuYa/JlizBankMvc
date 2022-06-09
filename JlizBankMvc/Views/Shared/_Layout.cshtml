@@ -1,0 +1,187 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - JlizBankMvc</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link href='https://fonts.googleapis.com/css?family=Voces' rel="stylesheet"/>
+    <link href='https://fonts.googleapis.com/css?family=Itim' rel="stylesheet"/>
+    <link href='https://fonts.googleapis.com/css?family=Fondamento' rel="stylesheet"/>
+
+   
+    
+<style>
+
+        button{
+            font-family: Voces, cursive;
+            width:90%;
+            font-size: 16px;
+            color: rgb(0, 0, 0);
+            background-color: rgb(255, 255, 255);
+            border-width:0;
+
+        }
+        button:hover{
+           text-shadow: rgb(135, 135, 135) 2px 2px 2px;
+        }
+
+   .accordion-button{
+        font-size:22px;        font-weight:bold;
+        text-align:center;
+
+
+   }
+
+   .NoCollapse{
+        font-size:22px;        font-weight:bold;
+        height:50px;
+        text-align:left;
+        margin:0 0 0 15px;
+   }
+   .accordion-body>button{
+      background-image:url("/Images/coin.jpg");
+      background-repeat:no-repeat;
+      background-position:5px;
+       background-size:15px;
+       text-align:center;
+       margin:2% 0 2% 4%;
+   }
+
+
+   .WedjatBtn{
+       text-align:left;
+       font-size:30px;
+       font-family:微軟正黑體;
+       font-weight:bold;
+       color:#007500;
+       width:100%;
+      background-image:url("/Images/Wedjat.png");
+      background-repeat:no-repeat;
+      background-position:215px 10px;
+      background-size:35px;
+   }
+   body{
+        background-color:#FFFFF4;
+      /*  background-image:url("/Images/handshake-2009183_1920.png");
+        background-size: 70% 70%;
+        background-repeat: no-repeat;
+        background-position: center;*/
+        
+   }
+
+</style>
+
+</head>
+<body >
+
+    <header >
+         
+   
+  <div class="accordion accordion-flush" id="acMain" style="width:20%; position:fixed; overflow: hidden;">
+
+       
+            <div >
+                <button class="WedjatBtn" onclick="location.href='@Url.Action("Index", "Home")'">傑力士商業銀行</button>
+            </div>
+
+
+
+     
+
+      @{
+                    if (Context.User.Identities.Any(i=>i.IsAuthenticated)==false)
+                    {
+                        <div class="accordion-item">
+                         <button class="NoCollapse" onclick="location.href='@Url.Action("Register", "Login")'">Register Account</button>
+                        </div>
+
+                        <div class="accordion-item">
+                        <button class="NoCollapse" onclick="location.href='@Url.Action("Index", "Login")'" >Login Account</button>
+                        </div>
+
+                        <div class="accordion-item">
+                        <button class="NoCollapse" onclick="location.href='@Url.Action("ForgetPassword", "Modify")'" >Forget Password</button>
+                        </div>
+                    }
+       }
+  
+
+
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="flush-headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+       Balance Overview
+      </button>
+    </h2>
+    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#acMain">
+      <div class="accordion-body">
+          <button onclick="location.href='@Url.Action("BalanceView", "Transaction")'"   >Balance (NTD)</button>
+         <button onclick="location.href='@Url.Action("TransferMoney", "Transaction")'"  >Trasnfer Money</button>
+        <button onclick="location.href='@Url.Action("Index", "Transaction")'"  >Transaction Details</button>
+      </div>
+    </div>
+  </div>
+
+
+    <div class="accordion-item">
+    <h2 class="accordion-header" id="flush-headingFour">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+        Credit Card
+      </button>
+    </h2>
+    <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#acMain">
+      <div class="accordion-body">
+           <button href="#"  >Apply for a credit card</button>
+          <button href="#"  >Credit card statement</button>
+      </div>
+    </div>
+  </div>
+
+    <div class="accordion-item">
+    <h2 class="accordion-header" id="flush-headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+        Account Settings
+      </button>
+    </h2>
+    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#acMain">
+      <div class="accordion-body">
+           <button onclick="location.href='@Url.Action("Index", "Modify")'"  >Modify Personal Information</button>
+          <button onclick="location.href='@Url.Action("ModifyPassword", "Modify")'"  >Modify Password</button>
+          
+      </div>
+    </div>
+  </div>
+
+  @{
+                    if (Context.User.Identities.Any(i=>i.IsAuthenticated))
+                    {
+                        <div class="accordion-item">
+                         <button class="NoCollapse" onclick="location.href='@Url.Action("Logout", "Login")'" >Logout</button>
+                        </div>
+
+                    }
+       }
+</div>
+
+
+    </header>
+
+      <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+   @* <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2022 - JlizBankMvc - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>*@
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,247 @@
+﻿@model  JlizBankMvc.Models.TransactionViewModel;
+@{
+    ViewData["Title"] = "TransferMoney";
+}
+
+
+
+<style>
+            .form-group{
+         padding:2% 10% 2% 10%;
+         margin:1% 25% 0 25%;
+        border-radius:20px;
+        background-color:white;
+        width:50%;
+        box-shadow:0px 0px 5px;
+    }
+
+    h2{
+        text-align:center;
+        color:#3D7878;
+        font-size:50px;
+        font-weight:bold;
+        font-family: Fondamento, cursive;
+    }
+
+        .MyBtn{
+        border-radius:30px;
+        width:50%;
+       white-space: normal;
+        margin:2%;
+        background-color:#00FFFF;
+        box-shadow:2px 2px 4px;
+    }
+        .MyBtn:hover{
+        background-color:#00E3E3;
+    }
+          label{
+        font-size:20px;
+        font-weight:300;
+         font-family: Itim, cursive;
+    }
+        input,label,a,p{
+        font-family: Itim, cursive;
+        
+    }
+
+        p{
+        background-color:#D7FFEE;
+        border-radius:5px;
+        width:50%;
+        box-shadow:2px 2px 5px;
+        padding-left:5%;
+    }
+
+    .MyRadio{
+        margin:1%;
+        display:inline-block;
+    }
+    .form-check{
+        display:none;
+        padding:0;
+    }
+
+    #RadioGroup{
+        border:5px #00FFFF solid;
+        border-radius:10px;
+        padding:2%;
+    }
+
+        .errorMsg{
+        transition:0.2s;
+        background-image: url("/Images/Wrong.png");
+        background-size: 20px;
+        background-repeat: no-repeat;
+        background-position: 0px 10px;
+        font-size:14px;
+      border-radius:6px;
+      padding:5px 0 0 25px;
+      max-height:0;
+      transition:0.4s;
+      overflow:hidden;
+      color:red;
+  }
+
+    input[type=text]:invalid:not(:focus):not(:placeholder-shown){
+     background:pink;
+ }
+
+ input[type=text]:invalid:not(:placeholder-shown) ~ .errorMsg{
+         max-height:30px;
+         word-wrap:normal;
+     }
+
+       .wrong{
+      background-image: url("/Images/Wrong.png");
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: 2% 8%;
+    padding-left:9%;
+    width:90%;
+      color:red; 
+      margin:4%;
+      background-color:#FFB5B5;
+      border-radius:6px;
+  }
+
+          .success{
+        background-color:#02F78E;
+        width:90%;
+         margin:3% 0 0 3%;
+         color:#01814A;
+         padding-left:9%;
+        background-image: url("/Images/valid.png");
+        background-size: 20px;
+        background-repeat: no-repeat;
+        background-position: 2% 8%;
+        border-radius:6px;
+  }
+
+</style>
+
+<h2>Transfer Money</h2>
+
+<form class="form-group" method="post"  asp-controller="Transaction" asp-action="TransferMoney" id="MyForm">
+    <label>Account Balance: </label>
+    
+        <p>@Model.AccountBalance.ToString("N0")    NTD</p>
+
+    <p></p>
+
+     <label>Your Account Number: </label>
+     <p>
+        @Model.FromAccountNum
+    </p>
+    <p></p>
+    
+      <label>Bank Name: </label>
+     <p>
+        @Model.FromBankName
+    </p>
+    <p></p>
+
+     <label>Trasnsfer Money: </label>
+    <input class="form-control" type="text" required placeholder="Range between 1~50000" asp-for="TransactionMoney" pattern="^\d{1,}$" maxlength=5/>
+     <div class="errorMsg" >Please input integer only!</div>
+     <p></p>
+
+    <label>Trasnsfer To Bank Name: </label>
+    <input class="form-control" type="text" required placeholder="Required" asp-for="ToBankName" id="inputBank" style="width:70%; display:inline-block;"/>
+    <button type="button" class="MyBtn" style="width:20%; border-radius:5px; float:right; background-color:#02F78E;" onclick="showRadio()">Choose</button>
+    <p></p>
+
+      
+    <script>
+        function showRadio(){
+            $('#RadioGroup').show();
+        }
+    </script>
+    <p></p>
+
+<div class=form-check id="RadioGroup">
+    <label>Please choose bank below:</label>
+    <button type="button" class="btn-close" aria-label="Close" onclick="CloseRadio()" style="float:right;"></button>
+    <script>
+        function CloseRadio(){
+            $('#RadioGroup').hide();
+        }      
+    </script>
+    <br />
+
+        @{
+            var i = 0;
+            foreach (var item in Model.AllBanks)
+            {
+                i++;
+                var id = "s" + i;
+                var labelId = "l" + i;
+                <div class="MyRadio">
+                 <input type="radio" class="btn-check" name="options-outlined" id="@id" autocomplete="off" onclick="selectBank()">
+                <label class="btn btn-outline-success" for="@id"  id="@labelId">@item</label>
+                </div>
+               
+                <script>
+                 function selectBank(){
+                        var id=document.querySelector('input[name="options-outlined"]:checked').id;
+                        var id2="l"+id[1];
+                         document.getElementById('inputBank').value=document.getElementById(id2).innerHTML;
+                     }
+          
+                </script>
+            }
+    }
+
+</div>
+
+      <label>Trasnsfer to the Account number: </label>
+    <input class="form-control" type="text" required placeholder="Required" asp-for="ToAccountNum"/>
+     <p></p>
+
+    <label>Remark some text: </label>
+    <p></p>
+    <textarea asp-for="Remark" maxlength=100 style="width:90%; height:90px; resize:none;"> </textarea>
+
+    
+    <label>Verification Code: </label>
+    <input class="form-control" type="text" required placeholder="Required" asp-for="TransferCode" style="width:60%;display:inline-block;"/>
+    <input type="submit" value="Send code" class="MyBtn" onclick="Countdown()" id="sendCode" style="width:30%; border-radius:5px; float:right; background-color:#02F78E;">
+    <p></p>
+ 
+@*設定10s後才能再次發送驗證碼*@
+     <script>
+            var btn=document.getElementById('sendCode');
+            var count=3;
+            var timer=null;
+        function Countdown(){
+
+            btn.disabled=true;
+            btn.value="Send code("+count+"s)";
+
+            if(count !=0){
+                timer=setTimeout(Countdown, 1000);
+                count--;
+            }
+            else{
+                btn.removeAttribute('disabled');
+                count=3;
+                document.getElementById('MyForm').submit();
+                btn.value="Send code";
+            }
+    }
+    </script>
+
+    <input type="submit" value="Confirm this deal" class="MyBtn"  >
+    <p></p>
+    @{
+    if(ViewBag.Wrong!=null && !string.IsNullOrEmpty(ViewBag.Wrong))
+    {
+        <p class="wrong">@ViewBag.Wrong</p>
+        
+    }
+}
+
+
+</form>
+
+
+

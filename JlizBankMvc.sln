@@ -5,7 +5,7 @@ VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JlizBankMvc", "JlizBankMvc\JlizBankMvc.csproj", "{E32CCE4E-B49A-4967-89F1-17806F014396}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JlizBankEntity", "JlizBankEntity\JlizBankEntity.csproj", "{FE57B780-1425-42E9-ABC0-89297EBE7157}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JlizBankEntity", "JlizBankEntity\JlizBankEntity.csproj", "{FE57B780-1425-42E9-ABC0-89297EBE7157}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

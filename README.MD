@@ -35,6 +35,54 @@
 <div class="errorMsg" style="">5-15 characters, at least one letter and one number!</div>
 ```
 
-<li>Use regex in the input tag</li>
+<li>Use Css to show success or fail message</li>
+
+```
+input[type=text]:valid, input[type=email]:valid, input[type=password]:valid{
+        transition:0.2s;
+        background-image: url("/Images/valid.png");
+        background-size: 20px;
+        background-repeat: no-repeat;
+        background-position: 2% 50%;
+        border-radius:6px;
+ }
+  input[type=text]:invalid:not(:focus):not(:placeholder-shown), input[type=email]:invalid:not(:focus):not(:placeholder-shown), input[type=password]:invalid:not(:focus):not(:placeholder-shown){
+     background:pink;
+ }
+ input[type=text]:invalid:not(:placeholder-shown) ~ .errorMsg,  input[type=email]:invalid:not(:placeholder-shown) ~ .errorMsg,  input[type=password]:invalid:not(:placeholder-shown) ~ .errorMsg{
+         max-height:60px;
+         word-wrap:normal;
+     }
+  input[type=text],   input[type=email], input[type=password], input[type=date]{
+      padding:10px 35px;
+      border-radius:10px;
+  }
+    .errorMsg{
+        transition:0.2s;
+        background-image: url("/Images/Wrong.png");
+        background-size: 20px;
+        background-repeat: no-repeat;
+        background-position: 0px 10px;
+        font-size:14px;
+      border-radius:6px;
+      padding:5px 0 0 25px;
+      max-height:0;
+      transition:0.4s;
+      overflow:hidden;
+      color:red;
+  }
+         .wrong{
+      background-image: url("/Images/Wrong.png");
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: 2% 8%;
+    padding-left:9%;
+    width:90%;
+      color:red; 
+      margin:4%;
+      background-color:#FFB5B5;
+      border-radius:6px;
+  }
+```
 	</ul>
 </ol>

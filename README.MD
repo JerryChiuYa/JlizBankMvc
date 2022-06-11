@@ -15,7 +15,7 @@
 
 ### Aditional Tools
 <ul>
-	<li><a href='https://marketplace.visualstudio.com/items?itemName=ErikEJ.EFCorePowerTools'>EF Core Power Tools</a></li>
+	<li><a href='https://marketplace.visualstudio.com/items?itemName=ErikEJ.EFCorePowerTools'>EF Core Power Tools-To do Entity Framework</a></li>
 </ul>
 
 ### Image Sources
@@ -23,4 +23,15 @@
 	<li><a href='https://pixabay.com/'>Pixbay</a></li>
 </ul>
 
-## How to be JlizBank's Client
+## Get Started
+<ol>
+	<li>Register</li>
+	<ul>
+		<li>Use regex in the input tag</li>
+		```html
+	<label>Login Account: </label>
+    <input class="form-control" type="text" required placeholder="Required" asp-for="LoginAccount" pattern="^(?=.*\d)(?=.*\w)[\d\w]{5,15}$"/>
+    <div class="errorMsg" style="">5-15 characters, at least one letter and one number!</div>
+		```
+	</ul>
+</ol>

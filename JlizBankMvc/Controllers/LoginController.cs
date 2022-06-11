@@ -70,7 +70,7 @@ namespace JlizBankMvc.Controllers
                     return RedirectToAction("Index", model);
                 }
 
-
+                
                 //Url.IsLocalUrl("外部網站");
 
                 //帳密驗證成功,將資訊存入Claim

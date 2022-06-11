@@ -92,18 +92,19 @@
       border-radius:6px;
   }
 
-  img{
+/*  img{
         border-radius: 20px;
         max-width: 200px;
         max-height: 200px;
-  }
+  }*/
 </style>
 <h2>Register</h2>
 
 <form class="form-group"  method="post" asp-controller="Login" asp-action="Register">
     
     <label>Login Account: </label>
-    <input class="form-control" type="text" required placeholder="Required" asp-for="LoginAccount"/>
+    <input class="form-control" type="text" required placeholder="Required" asp-for="LoginAccount" pattern="^(?=.*\d)(?=.*\w)[\d\w]{5,15}$"/>
+    <div class="errorMsg" style="">5-15 characters, at least one letter and one number!</div>
     <p></p>
 
      <label>Login Password: </label>
@@ -176,13 +177,13 @@
     <input class="form-control" type="date" required placeholder="Required" asp-for="Birthday" max=@DateTime.Now/>
     <p></p>
 
-     <label>Headshot </label>
+@*     <label>Headshot </label>
     <input class="form-control" type="file" required placeholder="Required" asp-for="Images" accept=".jpg, .png, .jepg" onchange="ViewHead()" id="ImageFile"/>
     <p></p>
 
-    <img id="ShowHead"/>
+    <img id="ShowHead"/>*@
 
-    <script>
+@*    <script>
         function ViewHead(){
               var show=document.getElementById('ShowHead');
             show.src=URL.createObjectURL(event.target.files[0]);
@@ -198,6 +199,7 @@
               link.click();
         }
     </script>
+*@
 
     <p></p>
     <label >Identity Number</label>

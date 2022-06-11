@@ -1,5 +1,5 @@
 # Welcome to JlizBank
-<img src="/ImgForIntro/Home.jpg"/>
+<img src="/ImgForIntro/Home.png"/>
 
 ### Built with
 <ul>

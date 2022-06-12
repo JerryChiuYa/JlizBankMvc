@@ -101,7 +101,7 @@ public void ConfigureServices(IServiceCollection services){
 ```
 <ul><li>In the LoginController</li></ul>
 
-```
+```Csharp
 //import namespace
 using Recaptcha.Web;
 using Recaptcha.Web.Mvc;
@@ -110,7 +110,7 @@ using Recaptcha.Web.Mvc;
 [AutoValidateAntiforgeryToken]
 public async Task<IActionResult> VerifyUser(LoginViewModel model)
 {
-	//reCAPCHA V2≈Á√“
+	//reCAPCHA V2 Verify
 	RecaptchaVerificationHelper recaptchaHelper = this.GetRecaptchaVerificationHelper();
 
 	if (string.IsNullOrEmpty(recaptchaHelper.Response))

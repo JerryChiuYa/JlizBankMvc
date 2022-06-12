@@ -33,7 +33,7 @@
 <img src="/ImgForIntro/ssms.png" width="50%" height="50%"/>
 
 <li>Use EF Power tools</li>
-<img src="/ImgForIntro/ef1.png"/>
+<img src="/ImgForIntro/ef1.png" width="50%" height="50%"/>
 
 <li>In appsettings.json</li>
 

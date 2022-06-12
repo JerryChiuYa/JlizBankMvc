@@ -224,13 +224,18 @@ public class SendCodeMailService
 ### The other functions
 <ul>
 <li>Balance review</li>
+<p></p>
 <img src="/ImgForIntro/balance.png" width="50%" height="50%"/>
 <li>Transaction details</li>
+<p></p>
 <img src="/ImgForIntro/transaction.png" width="50%" height="50%"/>
 <li>Modify your personal infomation</li>
+<p></p>
 <img src="/ImgForIntro/personalinfo.png" width="50%" height="50%"/>
 <li>Modify your password</li>
+<p></p>
 <img src="/ImgForIntro/modifyPwd.png" width="50%" height="50%"/>
 <li>Forget your password</li>
+<p></p>
 <img src="/ImgForIntro/forgetPwd.png" width="50%" height="50%"/>
 </ul>

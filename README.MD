@@ -84,7 +84,7 @@ input[type=text]:valid, input[type=email]:valid, input[type=password]:valid{
   }
 ```
 ### 2.Login
-<img src="/ImgForIntro/Login.png"/>
+<img src="/ImgForIntro/Login.png" width="50%" height="50%"/>
 <ul>
 		<li>Use reCAPTCHA V2 to prevent robots</li>
         <ul><li>In startup.cs</li></ul>

@@ -106,7 +106,6 @@ namespace JlizBankMvc.Controllers
             personalInfo.CustomerId = Guid.NewGuid();
             personalInfo.UserName = viewModel.UserName;
             personalInfo.Birthday = viewModel.Birthday;
-            personalInfo.Images = viewModel.Images;
   
 
             personalInfo.Phone = viewModel.Phone;

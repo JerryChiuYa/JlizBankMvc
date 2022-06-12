@@ -8,7 +8,6 @@ namespace JlizBankMvc.Models
         public string IdentityNum { get; set; }
         public string UserName { get; set; }
         public DateTime Birthday { get; set; }
-        public string Images { get; set; }
         public string Phone { get; set; }
         public string Mobile { get; set; }
         public string AccountBalance { get; set; }

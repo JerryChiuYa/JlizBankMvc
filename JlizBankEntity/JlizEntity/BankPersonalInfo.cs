@@ -22,7 +22,6 @@ namespace JlizBankEntity.JlizEntity
         public string Email { get; set; }
         public DateTime InitDate { get; set; }
         public DateTime? ModifyDate { get; set; }
-        public string Images { get; set; }
 
         public virtual ICollection<BankAccount> BankAccount { get; set; }
     }

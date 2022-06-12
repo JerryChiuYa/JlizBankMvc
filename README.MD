@@ -82,7 +82,7 @@ input[type=text]:valid, input[type=email]:valid, input[type=password]:valid{
 <p></p>
 <img src="/ImgForIntro/Success.png" width="400px" height="120px;"/>
 
-	</ul>
+
 
     <li>Login</li>
     <ul>

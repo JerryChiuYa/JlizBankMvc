@@ -83,4 +83,25 @@ input[type=text]:valid, input[type=email]:valid, input[type=password]:valid{
 <img src="/ImgForIntro/Success.png" width="400px" height="120px;"/>
 
 	</ul>
+
+    <li>Login</li>
+    <ul>
+		<li>Use reCAPTCHA V2 to prevent robots</li>
+
+        <ul>
+            <li>In startup.cs</li>
+            <label>import namespace</label>
+            ```
+            using Recaptcha.Web.Configuration;
+            ```
+            <label>In the </label>
+            ```
+             public void ConfigureServices(IServiceCollection services){
+                 ...
+             RecaptchaConfigurationManager.SetConfiguration(Configuration);
+             }
+            
+            ```
+        </ul>
+
 </ol>

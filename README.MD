@@ -76,11 +76,11 @@ input[type=text]:valid, input[type=email]:valid, input[type=password]:valid{
 ```
 <label>Error Result:</label>
 <p></p>
-<img src="/ImgForIntro/Error.png" width="350px" height="120px;"/>
+<img src="/ImgForIntro/Error.png" width="400px" height="120px;"/>
 
 <label>Success Result:</label>
 <p></p>
-<img src="/ImgForIntro/Success.png" width="350px" height="120px;"/>
+<img src="/ImgForIntro/Success.png" width="400px" height="120px;"/>
 
 	</ul>
 </ol>

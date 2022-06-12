@@ -48,7 +48,7 @@
 ```Csharp
  public void ConfigureServices(IServiceCollection services)
 {
-		//加入context服務
+		//Add context Service
 	services.AddDbContext<JlizBankContext>(c=>c.UseSqlServer("name=ConnectionStrings:JlizBank"));
 }
 
@@ -224,6 +224,13 @@ public class SendCodeMailService
 ### The other functions
 <ul>
 <li>Balance review</li>
+<img src="/ImgForIntro/balance.png" width="50%" height="50%"/>
 <li>Transaction details</li>
+<img src="/ImgForIntro/transaction.png" width="50%" height="50%"/>
 <li>Modify your personal infomation</li>
+<img src="/ImgForIntro/personalinfo.png" width="50%" height="50%"/>
+<li>Modify your password</li>
+<img src="/ImgForIntro/modifyPwd.png" width="50%" height="50%"/>
+<li>Forget your password</li>
+<img src="/ImgForIntro/forgetPwd.png" width="50%" height="50%"/>
 </ul>

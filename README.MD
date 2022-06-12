@@ -13,8 +13,9 @@
 	<li><a href='https://github.com/tanveery/recaptcha-net'>RecaptchaNet</a></li>
 </ul>
 
-### Aditional Tools
+### Database
 <ul>
+    <li><a href='https://docs.microsoft.com/zh-tw/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16'>SSMS</a></li>
 	<li><a href='https://marketplace.visualstudio.com/items?itemName=ErikEJ.EFCorePowerTools'>EF Core Power Tools-To do Entity Framework</a></li>
 </ul>
 
@@ -71,18 +72,13 @@ input[type=text]:valid, input[type=email]:valid, input[type=password]:valid{
       overflow:hidden;
       color:red;
   }
-         .wrong{
-      background-image: url("/Images/Wrong.png");
-    background-size: 20px;
-    background-repeat: no-repeat;
-    background-position: 2% 8%;
-    padding-left:9%;
-    width:90%;
-      color:red; 
-      margin:4%;
-      background-color:#FFB5B5;
-      border-radius:6px;
-  }
+
 ```
+<label>Error Result:</label>
+<img src="/ImgForIntro/Error.png"/>
+
+<label>Success Result:</label>
+<img src="/ImgForIntro/Success.png"/>
+
 	</ul>
 </ol>

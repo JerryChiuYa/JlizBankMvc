@@ -38,6 +38,16 @@
 
 <li>Use Css to show success or fail message</li>
 
+<label>Error Result:</label>
+<p></p>
+<img src="/ImgForIntro/Error.png" width="400px" height="120px;"/>
+
+<label>Success Result:</label>
+<p></p>
+<img src="/ImgForIntro/Success.png" width="400px" height="120px;"/>
+
+</ul>
+
 ```
 input[type=text]:valid, input[type=email]:valid, input[type=password]:valid{
         transition:0.2s;
@@ -73,16 +83,6 @@ input[type=text]:valid, input[type=email]:valid, input[type=password]:valid{
       color:red;
   }
 ```
-
-<label>Error Result:</label>
-<p></p>
-<img src="/ImgForIntro/Error.png" width="400px" height="120px;"/>
-
-<label>Success Result:</label>
-<p></p>
-<img src="/ImgForIntro/Success.png" width="400px" height="120px;"/>
-
-
 
     <li>Login</li>
     <ul>

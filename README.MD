@@ -89,7 +89,7 @@ input[type=text]:valid, input[type=email]:valid, input[type=password]:valid{
 		<li>Use reCAPTCHA V2 to prevent robots</li>
         <ul><li>In startup.cs---import namespace</li></ul>
 
-```
+```Csharp
 using Recaptcha.Web.Configuration;
 //..................
 //In the ConfigureServices method

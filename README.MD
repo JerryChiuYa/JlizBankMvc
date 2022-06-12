@@ -5,6 +5,8 @@
 <ul>
 	<li><a href='https://visualstudio.microsoft.com/zh-hant/vs/'>Visual Studio 2022</a></li>
 	<li><a href='https://docs.microsoft.com/zh-tw/dotnet/core/whats-new/dotnet-core-3-1'>.NET Core 3.1</a></li>
+	<li><a href='https://getbootstrap.com/docs/5.1/getting-started/introduction/'>Bootstrap 5.1.3 & Javascript</a></li>
+
 </ul>
 
 ### NuGet Package
@@ -25,10 +27,41 @@
 </ul>
 
 ## Get Started
-#### 1.Register
+#### 1.Prepare the data
+<ul>
+<li>Use SSMS</li>
+<img src="/ImgForIntro/ssms.png" width="50%" height="50%"/>
+
+<li>Use EF Power tools</li>
+<img src="/ImgForIntro/ef1.png"/>
+
+<li>In appsettings.json</li>
+
+```json
+{
+"ConnectionStrings": { "JlizBank": "Data Source=localhost;Initial Catalog=JlizBank;Persist Security Info=False;User ID=JC;Password=38405200;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=True;Connection Timeout=30;" }
+}
+```
+
+<li>In startup.cs</li>
+
+```Csharp
+ public void ConfigureServices(IServiceCollection services)
+{
+		//加入context服務
+	services.AddDbContext<JlizBankContext>(c=>c.UseSqlServer("name=ConnectionStrings:JlizBank"));
+}
+
+```
+
+</ul>
+
+
+
+#### 2.Register
 
 <ul>
-<li>Use regex in the input tag</li>
+<li>Use regex in the input tag in View</li>
 
 ```html5
 <label>Login Account: </label>
@@ -83,7 +116,7 @@ input[type=text]:valid, input[type=email]:valid, input[type=password]:valid{
       color:red;
   }
 ```
-### 2.Login
+### 3.Login
 <img src="/ImgForIntro/Login.png" width="50%" height="50%"/>
 <ul>
 		<li>Use reCAPTCHA V2 to prevent robots</li>
@@ -99,6 +132,15 @@ public void ConfigureServices(IServiceCollection services){
 	RecaptchaConfigurationManager.SetConfiguration(Configuration);
 }
 ```
+<ul><li>In appsettings.json</li></ul>
+
+```json
+{
+  "RecaptchaSiteKey": "Your RecaptchaSiteKey",
+  "RecaptchaSecretKey": "Your RecaptchaSecretKey"
+}
+```
+
 <ul><li>In the LoginController</li></ul>
 
 ```Csharp
@@ -110,7 +152,7 @@ using Recaptcha.Web.Mvc;
 [AutoValidateAntiforgeryToken]
 public async Task<IActionResult> VerifyUser(LoginViewModel model)
 {
-	//reCAPCHA V2驗證
+	//reCAPCHA V2 Verify
 	RecaptchaVerificationHelper recaptchaHelper = this.GetRecaptchaVerificationHelper();
 
 	if (string.IsNullOrEmpty(recaptchaHelper.Response))
@@ -134,7 +176,7 @@ public async Task<IActionResult> VerifyUser(LoginViewModel model)
 	@Html.RecaptchaWidget(renderApiScript:false)
 ```
 
-### 3.Transfer Money
+### 4.Transfer Money
 <img src="/ImgForIntro/Transfer.png" width="50%" height="50%"/>
 <ul>
 		<li>Use Smtp to send the verification code</li>
@@ -179,4 +221,9 @@ public class SendCodeMailService
 
 }
 ```
-
+### The other functions
+<ul>
+<li>Balance review</li>
+<li>Transaction details</li>
+<li>Modify your personal infomation</li>
+</ul>

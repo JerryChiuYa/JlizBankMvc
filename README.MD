@@ -75,10 +75,10 @@ input[type=text]:valid, input[type=email]:valid, input[type=password]:valid{
 
 ```
 <label>Error Result:</label>
-<img src="/ImgForIntro/Error.png"/>
+<img src="/ImgForIntro/Error.png" width="100px" height="80px;"/>
 
 <label>Success Result:</label>
-<img src="/ImgForIntro/Success.png"/>
+<img src="/ImgForIntro/Success.png" width="100px" height="80px;"/>
 
 	</ul>
 </ol>

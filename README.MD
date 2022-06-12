@@ -127,6 +127,12 @@ public async Task<IActionResult> VerifyUser(LoginViewModel model)
 	}
 }
 ```
+<ul><li>In the View-Render the reCAPTCHA</li></ul>
+
+```html5
+	@Html.RecaptchaApiScript()
+	@Html.RecaptchaWidget(renderApiScript:false)
+```
 
 ### 3.Transfer Money
 <img src="/ImgForIntro/Transfer.png" width="50%" height="50%"/>

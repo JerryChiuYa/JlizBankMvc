@@ -30,11 +30,11 @@
 	<ul>
 		<li>Use regex in the input tag</li>
 
-```
+<code>
 <label>Login Account: </label>
 <input class="form-control" type="text" required placeholder="Required" asp-for="LoginAccount" pattern="^(?=.*\d)(?=.*\w)[\d\w]{5,15}$"/>
 <div class="errorMsg" style="">5-15 characters, at least one letter and one number!</div>
-```
+</code>
 
 <li>Use Css to show success or fail message</li>
 

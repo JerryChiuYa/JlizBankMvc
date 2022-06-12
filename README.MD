@@ -128,6 +128,49 @@ public async Task<IActionResult> VerifyUser(LoginViewModel model)
 }
 ```
 
-</ul>
+### 3.Transfer Money
+<img src="/ImgForIntro/Transfer.png" width="50%" height="50%"/>
+<ul>
+		<li>Use Smtp to send the verification code</li>
+        <ul><li>In startup.cs</li></ul>
 
+```Csharp
+public class SendCodeMailService
+{
+	public string GetVerificationCode(string Email)
+	{
+	//Generate the random code
+	string codes = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	Random random = new Random();
+	string verifyCode = string.Empty;
+	for (int i = 0; i < 8; i++)
+		{
+		int index = random.Next(codes.Length);
+		verifyCode += codes[index];
+		}
+	//Send Email
+	using (MailMessage mailMessage = new MailMessage())
+	{
+		//Set receiver
+		mailMessage.From = new MailAddress("jerry384052@gmail.com");
+		//Receiver
+		mailMessage.To.Add(Email);
+		mailMessage.Subject = "Jliz Internet Bank-Reset Password--VerificationCode";
+		mailMessage.Body = $"Your code are {verifyCode}";
+
+	//Use SMTP to send Email
+	using (SmtpClient smtp = new SmtpClient())
+	{
+		smtp.Credentials = new NetworkCredential("jerry384052@gmail.com", "xiwjmiggmzfbodvr");
+		smtp.Host = "smtp.gmail.com";
+		smtp.Port = 25;
+		smtp.EnableSsl = true;
+		smtp.Send(mailMessage);
+	}
+}
+		return verifyCode;
+	}
+
+}
+```
 

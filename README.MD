@@ -30,7 +30,7 @@
 <ul>
 <li>Use regex in the input tag</li>
 
-```
+```html5
 <label>Login Account: </label>
 <input class="form-control" type="text" required placeholder="Required" asp-for="LoginAccount" pattern="^(?=.*\d)(?=.*\w)[\d\w]{5,15}$"/>
 <div class="errorMsg" style="">5-15 characters, at least one letter and one number!</div>
@@ -48,7 +48,7 @@
 
 </ul>
 
-```
+```html5
 input[type=text]:valid, input[type=email]:valid, input[type=password]:valid{
         transition:0.2s;
         background-image: url("/Images/valid.png");
@@ -87,7 +87,7 @@ input[type=text]:valid, input[type=email]:valid, input[type=password]:valid{
 <img src="/ImgForIntro/Login.png"/>
 <ul>
 		<li>Use reCAPTCHA V2 to prevent robots</li>
-        <ul><li>In startup.cs---import namespace</li></ul>
+        <ul><li>In startup.cs</li></ul>
 
 ```Csharp
 using Recaptcha.Web.Configuration;
@@ -110,7 +110,7 @@ using Recaptcha.Web.Mvc;
 [AutoValidateAntiforgeryToken]
 public async Task<IActionResult> VerifyUser(LoginViewModel model)
 {
-	//reCAPCHA V2 Verify
+	//reCAPCHA V2≈Á√“
 	RecaptchaVerificationHelper recaptchaHelper = this.GetRecaptchaVerificationHelper();
 
 	if (string.IsNullOrEmpty(recaptchaHelper.Response))

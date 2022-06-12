@@ -46,7 +46,6 @@ namespace JlizBankMvc.Controllers
                 ModelState.AddModelError("", "Incorrect captcha answer!");
                 TempData["RecaptchaMsg"] = "Catch you robot!";
                 return RedirectToAction("Index", "Home");
-
             }
             else
             {

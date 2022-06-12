@@ -25,10 +25,10 @@
 </ul>
 
 ## Get Started
-<ol>
-	<li>Register</li>
-	<ul>
-		<li>Use regex in the input tag</li>
+#### 1.Register
+
+<ul>
+<li>Use regex in the input tag</li>
 
 ```
 <label>Login Account: </label>
@@ -37,11 +37,11 @@
 ```
 
 <li>Use Css to show success or fail message</li>
-
+<p></p>
 <label>Error Result:</label>
 <p></p>
 <img src="/ImgForIntro/Error.png" width="400px" height="120px;"/>
-
+<p></p>
 <label>Success Result:</label>
 <p></p>
 <img src="/ImgForIntro/Success.png" width="400px" height="120px;"/>
@@ -83,27 +83,51 @@ input[type=text]:valid, input[type=email]:valid, input[type=password]:valid{
       color:red;
   }
 ```
-
-    <li>Login</li>
-    <ul>
+### 2.Login
+<img src="/ImgForIntro/Login.png"/>
+<ul>
 		<li>Use reCAPTCHA V2 to prevent robots</li>
+        <ul><li>In startup.cs---import namespace</li></ul>
 
-        <ul>
-            <li>In startup.cs</li>
-            <label>import namespace</label>
+```
+using Recaptcha.Web.Configuration;
+//..................
+//In the ConfigureServices method
+//..................
+public void ConfigureServices(IServiceCollection services){
+//..................
+	RecaptchaConfigurationManager.SetConfiguration(Configuration);
+}
+```
+<ul><li>In the LoginController</li></ul>
 
-            ```
-            using Recaptcha.Web.Configuration;
-            ```
+```
+//import namespace
+using Recaptcha.Web;
+using Recaptcha.Web.Mvc;
+//........................
+[HttpPost]
+[AutoValidateAntiforgeryToken]
+public async Task<IActionResult> VerifyUser(LoginViewModel model)
+{
+	//reCAPCHA V2≈Á√“
+	RecaptchaVerificationHelper recaptchaHelper = this.GetRecaptchaVerificationHelper();
 
-            <label>In the ConfigureServices method</label>
-            ```
-             public void ConfigureServices(IServiceCollection services){
-                 ...
-             RecaptchaConfigurationManager.SetConfiguration(Configuration);
-             }        
-            ```
+	if (string.IsNullOrEmpty(recaptchaHelper.Response))
+	{
+	   TempData["RecaptchaMsg"] = "Please click the above botton to verify !";
+	   return View("Index");
+	}
+		RecaptchaVerificationResult recaptchaResult = recaptchaHelper.VerifyRecaptchaResponse();
+	if (!recaptchaResult.Success)
+	{
+		ModelState.AddModelError("", "Incorrect captcha answer!");
+		TempData["RecaptchaMsg"] = "Catch you robot!";
+		return RedirectToAction("Index", "Home");
+	}
+}
+```
 
-        </ul>
+</ul>
 
-</ol>
+

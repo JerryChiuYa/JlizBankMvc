@@ -1,5 +1,6 @@
 ﻿# Welcome to JlizBank
 
+
 ### Overview
 This is a simulate Internet banking, which is called JlizBank.<br>
 Here, you can create your own account to transfer money, view the balance, transaction details and so on.<br>
@@ -7,6 +8,7 @@ The famous singer 海雅谷木 once said JlizBank is very simple and convenient 
 So what are you waiting for?
 
 <img src="/ImgForIntro/Home.png"/>
+<hr>
 
 ### Built with
 <ul>
@@ -34,7 +36,7 @@ So what are you waiting for?
 </ul>
 
 ## Get Started
-#### 1.Prepare the data
+### 1.Prepare the data
 <ul>
 <li>Use SSMS</li>
 <img src="/ImgForIntro/ssms.png" width="50%" height="50%"/>
@@ -63,8 +65,9 @@ So what are you waiting for?
 
 </ul>
 
+<hr>
 
-#### 2.Register
+### 2.Register
 
 <ul>
 <li>Use regex in the input tag in View</li>
@@ -122,6 +125,8 @@ input[type=text]:valid, input[type=email]:valid, input[type=password]:valid{
       color:red;
   }
 ```
+<hr>
+
 ### 3.Login
 <img src="/ImgForIntro/Login.png" width="50%" height="50%"/>
 <ul>
@@ -181,8 +186,10 @@ public async Task<IActionResult> VerifyUser(LoginViewModel model)
 	@Html.RecaptchaApiScript()
 	@Html.RecaptchaWidget(renderApiScript:false)
 ```
+<hr>
 
 ### 4.Authentication with Cookies
+
 <ul>
 <li>In startup.cs</li>
 
@@ -229,6 +236,8 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 ```
 </ul>
 
+<hr>
+
 ### 5.Transfer Money
 <img src="/ImgForIntro/Transfer.png" width="50%" height="50%"/>
 <ul>
@@ -274,6 +283,8 @@ public class SendCodeMailService
 
 }
 ```
+<hr>
+
 ### The other functions
 <ul>
 <li>Balance review</li>

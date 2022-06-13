@@ -1,9 +1,9 @@
 ﻿# Welcome to JlizBank
 
 ### Overview
-This is a simulate Internet banking, which is called JlizBank.
-Here, you can create your own account to transfer money, view the balance, transaction details and so on.
-The famous singer 海雅谷木 once said JlizBank is very simple and convenient to use.
+This is a simulate Internet banking, which is called JlizBank.<br>
+Here, you can create your own account to transfer money, view the balance, transaction details and so on.<br>
+The famous singer 海雅谷木 once said JlizBank is very simple and convenient to use.<br>
 So what are you waiting for?
 
 <img src="/ImgForIntro/Home.png"/>

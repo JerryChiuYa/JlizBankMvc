@@ -1,7 +1,6 @@
 ﻿# Welcome to JlizBank
 
-
-### Overview
+## Overview
 This is a simulate Internet banking, which is called JlizBank.<br>
 Here, you can create your own account to transfer money, view the balance, transaction details and so on.<br>
 The famous singer 海雅谷木 once said JlizBank is very simple and convenient to use.<br>
@@ -129,9 +128,10 @@ input[type=text]:valid, input[type=email]:valid, input[type=password]:valid{
 
 ### 3.Login
 <img src="/ImgForIntro/Login.png" width="50%" height="50%"/>
-<ul>
-		<li>Use reCAPTCHA V2 to prevent robots</li>
-        <ul><li>In startup.cs</li></ul>
+
+##### Use reCAPTCHA V2 to prevent robots
+
+<ul><li>In startup.cs</li></ul>
 
 ```Csharp
 using Recaptcha.Web.Configuration;
@@ -285,7 +285,7 @@ public class SendCodeMailService
 ```
 <hr>
 
-### The other functions
+### Other functions
 <ul>
 <li>Balance review</li>
 <p></p>

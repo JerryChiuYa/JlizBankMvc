@@ -28,3 +28,13 @@ C:\Users\jerry\source\MyGithub\JlizBankMvc\JlizBankEntity\obj\Debug\netcoreapp3.
 C:\Users\jerry\source\MyGithub\JlizBankMvc\JlizBankEntity\obj\Debug\netcoreapp3.1\JlizBankEntity.csproj.CoreCompileInputs.cache
 C:\Users\jerry\source\MyGithub\JlizBankMvc\JlizBankEntity\obj\Debug\netcoreapp3.1\JlizBankEntity.dll
 C:\Users\jerry\source\MyGithub\JlizBankMvc\JlizBankEntity\obj\Debug\netcoreapp3.1\JlizBankEntity.pdb
+C:\Users\USER\source\gitTest\JlizBankMvc\JlizBankEntity\bin\Debug\netcoreapp3.1\JlizBankEntity.deps.json
+C:\Users\USER\source\gitTest\JlizBankMvc\JlizBankEntity\bin\Debug\netcoreapp3.1\JlizBankEntity.dll
+C:\Users\USER\source\gitTest\JlizBankMvc\JlizBankEntity\bin\Debug\netcoreapp3.1\JlizBankEntity.pdb
+C:\Users\USER\source\gitTest\JlizBankMvc\JlizBankEntity\obj\Debug\netcoreapp3.1\JlizBankEntity.csproj.AssemblyReference.cache
+C:\Users\USER\source\gitTest\JlizBankMvc\JlizBankEntity\obj\Debug\netcoreapp3.1\JlizBankEntity.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\USER\source\gitTest\JlizBankMvc\JlizBankEntity\obj\Debug\netcoreapp3.1\JlizBankEntity.AssemblyInfoInputs.cache
+C:\Users\USER\source\gitTest\JlizBankMvc\JlizBankEntity\obj\Debug\netcoreapp3.1\JlizBankEntity.AssemblyInfo.cs
+C:\Users\USER\source\gitTest\JlizBankMvc\JlizBankEntity\obj\Debug\netcoreapp3.1\JlizBankEntity.csproj.CoreCompileInputs.cache
+C:\Users\USER\source\gitTest\JlizBankMvc\JlizBankEntity\obj\Debug\netcoreapp3.1\JlizBankEntity.dll
+C:\Users\USER\source\gitTest\JlizBankMvc\JlizBankEntity\obj\Debug\netcoreapp3.1\JlizBankEntity.pdb

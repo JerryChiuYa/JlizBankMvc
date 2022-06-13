@@ -1,4 +1,11 @@
-# Welcome to JlizBank
+﻿# Welcome to JlizBank
+
+### Overview
+This is a simulate Internet banking, which is called JlizBank.
+Here, you can create your own account to transfer money, view the balance, transaction details and so on.
+The famous singer 海雅谷木 once said JlizBank is very simple and convenient to use.
+So what are you waiting for?
+
 <img src="/ImgForIntro/Home.png"/>
 
 ### Built with
@@ -15,7 +22,7 @@
 	<li><a href='https://github.com/tanveery/recaptcha-net'>RecaptchaNet</a></li>
 </ul>
 
-### Database
+### Database & Tools
 <ul>
     <li><a href='https://docs.microsoft.com/zh-tw/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16'>SSMS</a></li>
 	<li><a href='https://marketplace.visualstudio.com/items?itemName=ErikEJ.EFCorePowerTools'>EF Core Power Tools-To do Entity Framework</a></li>
@@ -55,7 +62,6 @@
 ```
 
 </ul>
-
 
 
 #### 2.Register
@@ -176,7 +182,54 @@ public async Task<IActionResult> VerifyUser(LoginViewModel model)
 	@Html.RecaptchaWidget(renderApiScript:false)
 ```
 
-### 4.Transfer Money
+### 4.Authentication with Cookies
+<ul>
+<li>In startup.cs</li>
+
+```Csharp
+//import namespace
+using Microsoft.AspNetCore.Authentication.Cookies;
+//...............
+//In the method of ConfigureServices
+  public void ConfigureServices(IServiceCollection services)
+{
+	 services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(o =>
+	 {
+		 o.LoginPath = new PathString("/Login/Index");
+		 o.LogoutPath = new PathString("/Login/Logout");
+		 o.ExpireTimeSpan = TimeSpan.FromMinutes(10);
+		 o.SlidingExpiration = true;
+	 });
+}
+//In the method of Configure
+ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+ {
+ //..................................................................................
+	 app.UseAuthentication(); //Add this method before app.UseAuthorization()
+	 app.UseAuthorization();
+ }
+```
+<li>In LoginController</li>
+
+```Csharp
+ [HttpPost]
+ [AutoValidateAntiforgeryToken]
+ public async Task<IActionResult> VerifyUser(LoginViewModel model)
+ {
+ //...............................................................................
+	 //When we authentucate the identity, save the info to Claims for following functions
+	 var personalInfo = await _customer.GetPersonalInfoAsync(user.CustomerId.ToString());
+
+	Claim[] claims = new[] { new Claim(ClaimTypes.NameIdentifier, user.CustomerId.ToString()), new Claim(ClaimTypes.GivenName, user.LoginAccount), new Claim(ClaimTypes.Name, personalInfo.UserName) };
+	ClaimsIdentity identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+	ClaimsPrincipal principal = new ClaimsPrincipal(identity);
+
+	await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+ }
+```
+</ul>
+
+### 5.Transfer Money
 <img src="/ImgForIntro/Transfer.png" width="50%" height="50%"/>
 <ul>
 		<li>Use Smtp to send the verification code</li>

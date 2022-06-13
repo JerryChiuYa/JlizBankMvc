@@ -44,7 +44,7 @@ namespace JlizBankMvc
             //·s¼WCookieÅçÃÒ
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(o =>
             {
-                o.LoginPath = new PathString("/Login/VerifyUser");
+                o.LoginPath = new PathString("/Login/Index");
                 o.LogoutPath = new PathString("/Login/Logout");
                 o.ExpireTimeSpan = TimeSpan.FromMinutes(10);
                 o.SlidingExpiration = true;

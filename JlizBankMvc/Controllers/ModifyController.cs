@@ -122,10 +122,11 @@ namespace JlizBankMvc.Controllers
             }
 
             //寄送mail驗證碼
-            HttpContext.Session.SetString("verifyCode", "123");
+            var code = new ResetPwdMailService().GetVerificationCode(viewModel.Email);
+            HttpContext.Session.SetString("verifyCode", code);
             //記錄登入帳號
             HttpContext.Session.SetString("LoginAccount", viewModel.LoginAccount);
-            //verifyCode = new ResetPwdMailService().GetVerificationCode(viewModel.Email);
+            
             TempData["IdMsg"] = "The Verification code had been sent to your Email! Please fill in the code within 5 minutes!";
             return View("ForgetPassword", viewModel);
         }
@@ -150,6 +151,11 @@ namespace JlizBankMvc.Controllers
             var user = await _customerService.GetAccountAsync(LoginAccoint);
             user.HashPassword = new HashService().GetHashPwd(viewModel.NewPwd, user.CustomerId.ToString());
             await _customerService.ChangePassword(user);
+
+            //更改完密碼即移除Session
+            HttpContext.Session.Remove("LoginAccount");
+            HttpContext.Session.Remove("verifyCode");
+
             return RedirectToAction("Index", "Login");
         }
     }

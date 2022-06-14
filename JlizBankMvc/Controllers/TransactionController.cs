@@ -205,8 +205,8 @@ namespace JlizBankMvc.Controllers
             //發送Email驗證碼
             var personalInfo = await _customerService.GetPersonalInfoAsync(User.FindFirstValue(ClaimTypes.NameIdentifier));
             var emailService=new SendCodeMailService();
-            //string code = emailService.GetVerificationCode(personalInfo.Email);
-            string code = "123";
+            string code = emailService.GetVerificationCode(personalInfo.Email);
+            //string code = "123";
             HttpContext.Session.SetString("TransferCode", code);
             if (viewModel.TransferCode==null && string.IsNullOrEmpty(viewModel.TransferCode) )
             {
@@ -258,9 +258,11 @@ namespace JlizBankMvc.Controllers
             receiveDetails.TransactionType = "Receive";
 
             await _customerService.CreateTransactionRecordsAsync(receiveDetails);
-
             ViewBag.Success = "Successful transaction!";
+
+            //移除驗證碼Session
             HttpContext.Session.Remove("TransferCode");
+
             return View("ShowTransactionResult", viewModel);
         }
 

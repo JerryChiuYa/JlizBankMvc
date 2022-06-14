@@ -38,6 +38,7 @@ So what are you waiting for?
 ### 1.Prepare the data
 <ul>
 <li>Use SSMS</li>
+<p>Please copy my variable name and data type to let C# easily to use.</p>
 <img src="/ImgForIntro/ssms.png" width="50%" height="50%"/>
 
 <li>Use EF Power tools</li>
@@ -66,7 +67,54 @@ So what are you waiting for?
 
 <hr>
 
-### 2.Register
+### 2.Dependence Injection
+
+<ul>
+<li>Create a project-Class Library to store an Interface and a class for following use</li>
+</ul>
+
+```CSharp
+//Interface ICustomerService
+    public interface ICustomerService
+    {
+        public Task<bool> CreateCustomerAsync(BankPersonalInfo personalInfo, BankAccount account);
+        public Task<bool> CreateTransactionRecordsAsync(TransactionRecordsDetails details);
+        public Task<BankPersonalInfo> GetPersonalInfoAsync(string CustomerId);
+        public Task<BankAccount> GetAccountAsync(string LoginAccount);
+		.................................................
+	}
+
+// class CustomerService
+  public class CustomerService : ICustomerService
+    {
+        public Task<BankPersonalInfo> GetPersonalInfoAsync(string CustomerId)
+        {
+            var entity = _context.BankPersonalInfo.Where(b=>b.CustomerId.ToString()==CustomerId).FirstOrDefaultAsync();
+            if (entity == null)
+            {
+                return null;
+            }
+            return entity;
+        }
+	}
+	..................................................
+```
+
+<ul>
+<li>In startup.cs</li>
+</ul>
+
+```Csharp
+ public void ConfigureServices(IServiceCollection services)
+{
+		//Dependence Injection
+         services.AddScoped<ICustomerService, CustomerService>();
+}
+
+```
+<hr>
+
+### 3.Register
 
 <ul>
 <li>Use regex in the input tag in View</li>
@@ -126,7 +174,7 @@ input[type=text]:valid, input[type=email]:valid, input[type=password]:valid{
 ```
 <hr>
 
-### 3.Login
+### 4.Login
 <img src="/ImgForIntro/Login.png" width="50%" height="50%"/>
 
 ##### Use reCAPTCHA V2 to prevent robots
@@ -188,7 +236,7 @@ public async Task<IActionResult> VerifyUser(LoginViewModel model)
 ```
 <hr>
 
-### 4.Authentication with Cookies
+### 5.Authentication with Cookies
 
 <ul>
 <li>In startup.cs</li>
@@ -238,7 +286,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 
 <hr>
 
-### 5.Transfer Money
+### 6.Transfer Money
 <img src="/ImgForIntro/Transfer.png" width="50%" height="50%"/>
 <ul>
 		<li>Use Smtp to send the verification code</li>

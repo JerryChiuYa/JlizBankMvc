@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "RrbKUw7CnImypOd02mA/xVgWGjqQMFprH0ooMWETlalkN9b6V6xEipE3sYC2dfd+Uyf5TV9WEgEt60Xxedx8AA==",
+  "dgSpecHash": "Ti0HHpQyGfFeU+TKd6rvJEI1wu3lIwTM5QmmjXWaLoHdazqZSu2ZLRsVQlALp4z0FoOedbsNBnhrEn3fjPbtOA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\USER\\source\\gitTest\\JlizBankMvc\\JlizBankEntity\\JlizBankEntity.csproj",
+  "projectFilePath": "C:\\Users\\USER\\source\\repos\\JlizBankMvc\\JlizBankEntity\\JlizBankEntity.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\USER\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.1\\microsoft.bcl.hashcode.1.1.1.nupkg.sha512",

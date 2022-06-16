@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "aJqVerBXnBQaNs4kjgpSahc7mwFltu0zlrrjF74CYrYvzfw+mIy21x5HeqbbGefQxbhWPg1Q7ietad7sboHKBw==",
+  "dgSpecHash": "YkZkbQxPSevOUDu40M+5pFa/rK2a6d9WOh8Y6Vk+DivsvXUpT+GTImkLB++fQZ8XEOojhzdj9Mavkk3ZNX75Hg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\USER\\source\\gitTest\\JlizBankMvc\\JlizBankMvc\\JlizBankMvc.csproj",
+  "projectFilePath": "C:\\Users\\USER\\source\\repos\\JlizBankMvc\\JlizBankMvc\\JlizBankMvc.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\USER\\.nuget\\packages\\microsoft.aspnetcore.antiforgery\\2.2.0\\microsoft.aspnetcore.antiforgery.2.2.0.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",

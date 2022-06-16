@@ -207,10 +207,10 @@
     <input type="submit" value="Send code" class="MyBtn" onclick="Countdown()" id="sendCode" style="width:30%; border-radius:5px; float:right; background-color:#02F78E;">
     <p></p>
  
-@*設定10s後才能再次發送驗證碼*@
+@*設定30s後才能再次發送驗證碼*@
      <script>
             var btn=document.getElementById('sendCode');
-            var count=3;
+            var count=30;
             var timer=null;
         function Countdown(){
 
@@ -223,7 +223,7 @@
             }
             else{
                 btn.removeAttribute('disabled');
-                count=3;
+                count=30;
                 document.getElementById('MyForm').submit();
                 btn.value="Send code";
             }

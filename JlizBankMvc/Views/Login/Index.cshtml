@@ -83,7 +83,7 @@
         @{
             if (TempData["RecaptchaMsg"]!=null && !string.IsNullOrEmpty(TempData["RecaptchaMsg"].ToString()))
             {
-                <p style="color:red;">@TempData["RecaptchaMsg"].ToString()</p>
+                <p class="wrong">@TempData["RecaptchaMsg"].ToString()</p>
             }
         }
   

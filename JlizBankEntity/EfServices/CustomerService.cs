@@ -66,9 +66,9 @@ namespace JlizBankEntity.EfServices
             return bankList;
         }
 
-        public Task<BankPersonalInfo> GetPersonalInfoAsync(string CustomerId)
+        public async Task<BankPersonalInfo> GetPersonalInfoAsync(string CustomerId)
         {
-            var entity = _context.BankPersonalInfo.Where(b=>b.CustomerId.ToString()==CustomerId).FirstOrDefaultAsync();
+            var entity =  await _context.BankPersonalInfo.Where(b=>b.CustomerId.ToString()==CustomerId).FirstOrDefaultAsync();
             if (entity == null)
             {
                 return null;

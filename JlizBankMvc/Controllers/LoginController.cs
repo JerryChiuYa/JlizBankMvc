@@ -97,7 +97,7 @@ namespace JlizBankMvc.Controllers
         public async Task<IActionResult> Register(RegisterViewModel viewModel)
         {
             //驗證帳號是否存在DB
-            var existAccount = _customer.GetAccountAsync(viewModel.LoginAccount);
+            var existAccount = await _customer.GetAccountAsync(viewModel.LoginAccount);
             if (existAccount!=null)
             {
                 ViewBag.wrong = "This account already exists in the system!";

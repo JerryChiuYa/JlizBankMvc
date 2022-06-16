@@ -93,8 +93,9 @@ namespace JlizBankEntity.EfServices
                             TransactionType=t.TransactionType,
                             Remark=t.Remark
                         };
+
             //篩選日期區間
-            query = query.Where(q=>q.TransactionTime>=start).Where(q=>q.TransactionTime<=end);
+            query = query.Where(q=>q.TransactionTime>=start).Where(q=>q.TransactionTime<=end.AddDays(1));
 
             //最後呼叫ToList才不會影響效能
             return await query.OrderByDescending(q => q.TransactionTime).ToListAsync();

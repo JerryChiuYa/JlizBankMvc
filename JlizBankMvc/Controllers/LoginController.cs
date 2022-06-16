@@ -11,6 +11,7 @@ using System;
 using System.IO;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace JlizBankMvc.Controllers
 {
@@ -138,8 +139,19 @@ namespace JlizBankMvc.Controllers
             bankInfo.AccountNum = accountNum.ToString();
 
             //數位帳戶 & 網路銀行皆有分行
-            bankInfo.BankId = "101";
-            bankInfo.BankName = "傑力士台北分行";
+
+            var AllBank = await _customer.GetAllBank();
+            var bankIdList = new List<string>();
+            var bankNameList = new List<string>();
+            foreach (var item in AllBank)
+            {
+                bankIdList.Add(item.BankId);
+                bankNameList.Add(item.BankName);
+            }
+            //隨機設置銀行, 實務上需臨櫃辦理
+            int randBankNum = random.Next(0, bankIdList.Count);
+            bankInfo.BankId = bankIdList[randBankNum];
+            bankInfo.BankName = bankNameList[randBankNum];
 
             await _customer.CreateCustomerAsync(personalInfo, bankInfo);
 

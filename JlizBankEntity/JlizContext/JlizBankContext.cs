@@ -131,8 +131,7 @@ namespace JlizBankEntity.JlizContext
 
             modelBuilder.Entity<TransactionRecordsDetails>(entity =>
             {
-                entity.HasKey(e => e.TransactionNum)
-                    .HasName("PK__Transact__D2A40C257CF1A393");
+                entity.HasKey(e => e.TransactionNum);
 
                 entity.Property(e => e.TransactionNum).ValueGeneratedNever();
 

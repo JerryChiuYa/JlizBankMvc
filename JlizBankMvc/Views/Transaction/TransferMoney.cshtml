@@ -175,19 +175,19 @@
                 i++;
                 var id = "s" + i;
                 var labelId = "l" + i;
-                <div class="MyRadio">
-                 <input type="radio" class="btn-check" name="options-outlined" id="@id" autocomplete="off" onclick="selectBank()">
-                <label class="btn btn-outline-success" for="@id"  id="@labelId">@item</label>
-                </div>
+                                    <div class="MyRadio">
+                                     <input type="radio" class="btn-check" name="options-outlined" id="@id" autocomplete="off" onclick="selectBank()">
+                                    <label class="btn btn-outline-success" for="@id"  id="@labelId">@item</label>
+                                    </div>
                
-                <script>
-                 function selectBank(){
-                        var id=document.querySelector('input[name="options-outlined"]:checked').id;
-                        var id2="l"+id[1];
-                         document.getElementById('inputBank').value=document.getElementById(id2).innerHTML;
-                     }
-          
-                </script>
+                                    <script>
+                                     function selectBank(){
+                                            var id=document.querySelector('input[name="options-outlined"]:checked').id;
+                                            var id2="l"+id[1];
+                                             document.getElementById('inputBank').value=document.getElementById(id2).innerHTML;
+                                         }
+                              
+                                    </script>
             }
     }
 
@@ -223,19 +223,29 @@
             }
             else{
                 btn.removeAttribute('disabled');
+                //btn.disabled = false;
+                btn.value="Send code";
                 count=30;
                 document.getElementById('MyForm').submit();
-                btn.value="Send code";
+                
             }
     }
     </script>
 
-    <input type="submit" value="Confirm this deal" class="MyBtn"  >
+    <input type="submit" value="Confirm this deal" class="MyBtn" id="TBtn" >
     <p></p>
     @{
     if(ViewBag.Wrong!=null && !string.IsNullOrEmpty(ViewBag.Wrong))
     {
-        <p class="wrong">@ViewBag.Wrong</p>
+                            <p class="wrong">@ViewBag.Wrong</p>
+        
+    }
+}
+
+    @{
+    if(ViewBag.Success!=null && !string.IsNullOrEmpty(ViewBag.Success))
+    {
+                            <p class="success">@ViewBag.Success</p>
         
     }
 }

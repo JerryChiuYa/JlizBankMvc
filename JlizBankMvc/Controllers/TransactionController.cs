@@ -202,27 +202,37 @@ namespace JlizBankMvc.Controllers
                 ViewBag.wrong = "The account number of the receiver doesn't exist, please check again!";
                 return View(viewModel);
             }
-            //發送Email驗證碼
-            var personalInfo = await _customerService.GetPersonalInfoAsync(User.FindFirstValue(ClaimTypes.NameIdentifier));
-            var emailService=new SendCodeMailService();
-            string code = emailService.GetVerificationCode(personalInfo.Email);
-            //string code = "123";
-            HttpContext.Session.SetString("TransferCode", code);
-            if (viewModel.TransferCode==null && string.IsNullOrEmpty(viewModel.TransferCode) )
-            {
+
+            string code = String.Empty;
+            //先發訊息,再送驗證碼
+            if (viewModel.TransferCode == null && string.IsNullOrEmpty(viewModel.TransferCode))
+            {         
+                //發送Email驗證碼
+                var personalInfo = await _customerService.GetPersonalInfoAsync(User.FindFirstValue(ClaimTypes.NameIdentifier));
+                var emailService = new SendCodeMailService();
+                code = emailService.GetVerificationCode(personalInfo.Email);
+                //string code = "123";
+                ViewBag.Success = "We just send the code, please check your Email";
+                HttpContext.Session.SetString("TransferCode", code);
                 return View(viewModel);
             }
+
+            //檢查驗證碼
             if (HttpContext.Session.GetString("TransferCode") != viewModel.TransferCode)
             {
                 ViewBag.Wrong = "Please check the Vefify code!";
                 return View(viewModel);
             }
-            //Update帳戶餘額
+          //確認手續費
             if (user.AllertAccount==true)
             {
                 viewModel.HandlingFees = 15;
             }
-            viewModel.HandlingFees = 0;
+            else
+            {
+                viewModel.HandlingFees = 0;
+            }
+            //Update帳戶餘額
             user.AccountBalance= (decimal)(user.AccountBalance-viewModel.TransactionMoney-viewModel.HandlingFees);
             user.ModifyDate = DateTime.Now;
             await _customerService.UpdateBalanceAsync(user);
@@ -243,7 +253,10 @@ namespace JlizBankMvc.Controllers
             transferDetails.AccountBalance = user.AccountBalance;
             transferDetails.Remark = viewModel.Remark;
 
-   
+            //產生至結果畫面
+            viewModel.TransactionType = "Transfer";
+            viewModel.TransactionTime = transferDetails.TransactionTime;
+
             await _customerService.CreateTransactionRecordsAsync(transferDetails);
 
             //Update收款人餘額 

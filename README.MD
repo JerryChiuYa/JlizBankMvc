@@ -9,7 +9,7 @@ So what are you waiting for?
 <img src="/ImgForIntro/Home.png"/>
 <p></p>
 
-<video src="/ImgForIntro/JlizBankMvc.mp4" controls></video>
+[![Watch the video](/ImgForIntro/Home.png)](https://github.com/JerryChiuYa/JlizBankMvc/blob/master/ImgForIntro/JlizBankMvc.mp4)
 
 <hr>
 

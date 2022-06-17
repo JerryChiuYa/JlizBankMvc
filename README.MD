@@ -11,6 +11,11 @@ So what are you waiting for?
 
 <video src="/ImgForIntro/JlizBankMvc_short.mp4" controls></video>
 
+
+https://user-images.githubusercontent.com/105199835/174213982-9b159971-6e15-43ad-9d2b-1c1bdd129edd.mp4
+
+
+
 <hr>
 
 

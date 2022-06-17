@@ -9,7 +9,7 @@ So what are you waiting for?
 <img src="/ImgForIntro/Home.png"/>
 <p></p>
 <video id="video" controls="" preload="none" poster="封面">
-      <source id="wmv" src="/ImgForIntro/JlizBankMvc.wmv" type="video/wmv">
+      <source id="mp4" src="/ImgForIntro/JlizBankMvc.mp4" type="video/mp4">
 </video>
 
 

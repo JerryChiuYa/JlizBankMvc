@@ -9,7 +9,8 @@ So what are you waiting for?
 <img src="/ImgForIntro/Home.png"/>
 <p></p>
 
-<video src="/ImgForIntro/JlizBankMvc_short.mp4" controls></video>
+#### You can click <a href='https://github.com/JerryChiuYa/JlizBankMvc/blob/master/ImgForIntro/JlizBankMvc.mp4'>here</a> to download the full videos since this page have size limits
+https://user-images.githubusercontent.com/105199835/174213982-9b159971-6e15-43ad-9d2b-1c1bdd129edd.mp4
 
 <hr>
 

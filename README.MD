@@ -9,6 +9,7 @@ So what are you waiting for?
 <img src="/ImgForIntro/Home.png"/>
 <p></p>
 
+<video src="/ImgForIntro/JlizBankMvc_short.mp4" controls></video>
 
 <hr>
 

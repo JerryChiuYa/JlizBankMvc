@@ -7,7 +7,8 @@ The famous singer 海雅谷木 once said JlizBank is very simple and convenient 
 So what are you waiting for?
 
 <img src="/ImgForIntro/Home.png"/>
-<img src="/ImgForIntro/JlizBankMvc.wmv"/>
+<iframe src="/ImgForIntro/JlizBankMvc.wmv"></iframe>
+
 
 
 <hr>

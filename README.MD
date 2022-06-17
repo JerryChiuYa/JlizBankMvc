@@ -6,8 +6,9 @@ Here, you can create your own account to transfer money, view the balance, trans
 The famous singer 海雅谷木 once said JlizBank is very simple and convenient to use.<br>
 So what are you waiting for?
 
-<img src="/ImgForIntro/Home.png"/>
+<img src="/ImgForIntro/JlizBankMvc.wmv"/>
 <hr>
+
 
 ### Built with
 <ul>

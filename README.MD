@@ -8,9 +8,7 @@ So what are you waiting for?
 
 <img src="/ImgForIntro/Home.png"/>
 <p></p>
-<video>
-	<source src="/ImgForIntro/JlizBankMvc.mp4" type="video/mp4"/>
-</video>
+<img src="/ImgForIntro/JlizBankMvc.mp4"/>
 
 
 <hr>

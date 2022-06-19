@@ -331,7 +331,7 @@ public class SendCodeMailService
 	{
 		smtp.Credentials = new NetworkCredential("jerry384052@gmail.com", "xiwjmiggmzfbodvr");
 		smtp.Host = "smtp.gmail.com";
-		smtp.Port = 25;
+		smtp.Port = 587;
 		smtp.EnableSsl = true;
 		smtp.Send(mailMessage);
 	}

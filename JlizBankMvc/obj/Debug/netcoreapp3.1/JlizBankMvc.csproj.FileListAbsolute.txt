@@ -667,3 +667,4 @@ C:\Users\USER\source\gitTest\JlizBankMvc\JlizBankMvc\obj\Debug\netcoreapp3.1\Jli
 C:\Users\USER\source\gitTest\JlizBankMvc\JlizBankMvc\obj\Debug\netcoreapp3.1\JlizBankMvc.pdb
 C:\Users\USER\source\gitTest\JlizBankMvc\JlizBankMvc\obj\Debug\netcoreapp3.1\JlizBankMvc.genruntimeconfig.cache
 C:\Users\USER\source\repos\JlizBankMvc\JlizBankMvc\obj\Debug\netcoreapp3.1\Razor\Views\UnderDevelop\Index.cshtml.g.cs
+C:\Users\jerry\source\repos\JlizBankMvc\JlizBankMvc\obj\Debug\netcoreapp3.1\Razor\Views\UnderDevelop\Index.cshtml.g.cs

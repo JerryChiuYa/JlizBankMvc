@@ -91,7 +91,7 @@ https://user-images.githubusercontent.com/105199835/174213982-9b159971-6e15-43ad
         public Task<bool> CreateTransactionRecordsAsync(TransactionRecordsDetails details);
         public Task<BankPersonalInfo> GetPersonalInfoAsync(string CustomerId);
         public Task<BankAccount> GetAccountAsync(string LoginAccount);
-		.................................................
+		//.................................................
 	}
 
 // class CustomerService
@@ -107,7 +107,7 @@ https://user-images.githubusercontent.com/105199835/174213982-9b159971-6e15-43ad
             return entity;
         }
 	}
-	..................................................
+	//..................................................
 ```
 
 <ul>

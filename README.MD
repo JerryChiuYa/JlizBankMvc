@@ -210,7 +210,7 @@ input[type=text]:valid, input[type=email]:valid, input[type=password]:valid{
 <hr>
 
 ### 4.Login
-<img src="/ImgForIntro/Login.png" width="50%" height="50%"/>
+<img src="/ImgForIntro/Login.png" width="70%" height="70%"/>
 
 ##### Use reCAPTCHA V2 to prevent robots
 
@@ -322,7 +322,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 <hr>
 
 ### 6.Transfer Money
-<img src="/ImgForIntro/Transfer.png" width="50%" height="50%"/>
+<img src="/ImgForIntro/Transfer.png" width="70%" height="70%"/>
 <ul>
 		<li>Use Smtp to send the verification code</li>
         <ul><li>In startup.cs</li></ul>
@@ -372,17 +372,17 @@ public class SendCodeMailService
 <ul>
 <li>Balance review</li>
 <p></p>
-<img src="/ImgForIntro/balance.png" width="50%" height="50%"/>
+<img src="/ImgForIntro/balance.png" width="70%" height="70%"/>
 <li>Transaction details</li>
 <p></p>
-<img src="/ImgForIntro/transaction.png" width="50%" height="50%"/>
+<img src="/ImgForIntro/transaction.png" width="70%" height="70%"/>
 <li>Modify your personal infomation</li>
 <p></p>
-<img src="/ImgForIntro/personalinfo.png" width="50%" height="50%"/>
+<img src="/ImgForIntro/personalinfo.png" width="70%" height="70%"/>
 <li>Modify your password</li>
 <p></p>
-<img src="/ImgForIntro/modifyPwd.png" width="50%" height="50%"/>
+<img src="/ImgForIntro/modifyPwd.png" width="70%" height="70%"/>
 <li>Forget your password</li>
 <p></p>
-<img src="/ImgForIntro/forgetPwd.png" width="50%" height="50%"/>
+<img src="/ImgForIntro/forgetPwd.png" width="70%" height="70%"/>
 </ul>

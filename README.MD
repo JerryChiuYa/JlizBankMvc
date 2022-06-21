@@ -91,7 +91,7 @@ https://user-images.githubusercontent.com/105199835/174213982-9b159971-6e15-43ad
         public Task<bool> CreateTransactionRecordsAsync(TransactionRecordsDetails details);
         public Task<BankPersonalInfo> GetPersonalInfoAsync(string CustomerId);
         public Task<BankAccount> GetAccountAsync(string LoginAccount);
-		//.................................................
+		.................................................
 	}
 
 // class CustomerService
@@ -107,7 +107,7 @@ https://user-images.githubusercontent.com/105199835/174213982-9b159971-6e15-43ad
             return entity;
         }
 	}
-	//..................................................
+	..................................................
 ```
 
 <ul>
@@ -120,6 +120,31 @@ https://user-images.githubusercontent.com/105199835/174213982-9b159971-6e15-43ad
 		//Dependence Injection
          services.AddScoped<ICustomerService, CustomerService>();
 }
+
+```
+
+<ul>
+<li>Add the [Authorize] before the controller, which needs to be check the identity.</li>
+</ul>
+
+```Csharp
+//............................
+ [HttpPost]
+ [Authorize] //Add this before controller
+ [AutoValidateAntiforgeryToken]
+ public async Task<IActionResult> ShowTransactionDetails(DateTime start, DateTime end)
+ {
+ 	if (start == DateTime.MinValue || end == DateTime.MinValue)
+ {
+	 ViewBag.errorMsg = "Please select Start date and End date!";
+	 return View("Index");
+ }
+ if (start > end)
+ {
+	 ViewBag.errorMsg = "Start date must be earlier or equal than End date!";
+	 return View("Index");
+ }
+ //..........................
 
 ```
 <hr>
@@ -331,7 +356,7 @@ public class SendCodeMailService
 	{
 		smtp.Credentials = new NetworkCredential("jerry384052@gmail.com", "xiwjmiggmzfbodvr");
 		smtp.Host = "smtp.gmail.com";
-		smtp.Port = 587;
+		smtp.Port = 25;
 		smtp.EnableSsl = true;
 		smtp.Send(mailMessage);
 	}
